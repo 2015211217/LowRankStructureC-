@@ -143,6 +143,33 @@ LowRankDescendC__/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/build
 .PHONY : LowRankDescendC__/fast
 
+HedgeAlgorithm.o: HedgeAlgorithm.cpp.o
+
+.PHONY : HedgeAlgorithm.o
+
+# target to build an object file
+HedgeAlgorithm.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/HedgeAlgorithm.cpp.o
+.PHONY : HedgeAlgorithm.cpp.o
+
+HedgeAlgorithm.i: HedgeAlgorithm.cpp.i
+
+.PHONY : HedgeAlgorithm.i
+
+# target to preprocess a source file
+HedgeAlgorithm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/HedgeAlgorithm.cpp.i
+.PHONY : HedgeAlgorithm.cpp.i
+
+HedgeAlgorithm.s: HedgeAlgorithm.cpp.s
+
+.PHONY : HedgeAlgorithm.s
+
+# target to generate assembly for a file
+HedgeAlgorithm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/HedgeAlgorithm.cpp.s
+.PHONY : HedgeAlgorithm.cpp.s
+
 MVEE.o: MVEE.cpp.o
 
 .PHONY : MVEE.o
@@ -224,33 +251,6 @@ OnlinePCA.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/OnlinePCA.cpp.s
 .PHONY : OnlinePCA.cpp.s
 
-main.o: main.cpp.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/main.cpp.s
-.PHONY : main.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,6 +260,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... LowRankDescendC__"
+	@echo "... HedgeAlgorithm.o"
+	@echo "... HedgeAlgorithm.i"
+	@echo "... HedgeAlgorithm.s"
 	@echo "... MVEE.o"
 	@echo "... MVEE.i"
 	@echo "... MVEE.s"
@@ -269,9 +272,6 @@ help:
 	@echo "... OnlinePCA.o"
 	@echo "... OnlinePCA.i"
 	@echo "... OnlinePCA.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 .PHONY : help
 
 

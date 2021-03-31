@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/LowRankDescendC__.dir/HedgeAlgorithm.cpp.o"
   "CMakeFiles/LowRankDescendC__.dir/MVEE.cpp.o"
   "CMakeFiles/LowRankDescendC__.dir/MirrorDescend.cpp.o"
   "CMakeFiles/LowRankDescendC__.dir/OnlinePCA.cpp.o"
-  "CMakeFiles/LowRankDescendC__.dir/main.cpp.o"
   "LowRankDescendC__"
   "LowRankDescendC__.pdb"
 )

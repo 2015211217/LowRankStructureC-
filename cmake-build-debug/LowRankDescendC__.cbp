@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.cpp">
+			<Option target="LowRankDescendC__"/>
+		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.cpp">
 			<Option target="LowRankDescendC__"/>
 		</Unit>
@@ -93,9 +96,6 @@
 			<Option target="LowRankDescendC__"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h">
-			<Option target="LowRankDescendC__"/>
-		</Unit>
-		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/main.cpp">
 			<Option target="LowRankDescendC__"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/CMakeLists.txt">
