@@ -43,6 +43,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/lib/cmake/opencv4/OpenCVConfig.cmake"
   "/usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake"
   "/usr/local/lib/cmake/opencv4/OpenCVModules.cmake"
+  "/usr/local/share/eigen3/cmake/Eigen3Config.cmake"
+  "/usr/local/share/eigen3/cmake/Eigen3ConfigVersion.cmake"
+  "/usr/local/share/eigen3/cmake/Eigen3Targets.cmake"
   )
 
 # The corresponding makefile is:
