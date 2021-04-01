@@ -68,10 +68,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/jiangxuanke/CLionProjects/LowRankDescendC++
+CMAKE_SOURCE_DIR = /Users/jiangxuanke/CLionProjects/LowRankStructureC-
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles /Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles /Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -131,17 +131,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named LowRankDescendC__
+# Target rules for targets named LowRankDescendC
 
 # Build rule for target.
-LowRankDescendC__: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 LowRankDescendC__
-.PHONY : LowRankDescendC__
+LowRankDescendC: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 LowRankDescendC
+.PHONY : LowRankDescendC
 
 # fast build rule for target.
-LowRankDescendC__/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/build
-.PHONY : LowRankDescendC__/fast
+LowRankDescendC/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/build
+.PHONY : LowRankDescendC/fast
 
 HedgeAlgorithm.o: HedgeAlgorithm.cpp.o
 
@@ -149,7 +149,7 @@ HedgeAlgorithm.o: HedgeAlgorithm.cpp.o
 
 # target to build an object file
 HedgeAlgorithm.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/HedgeAlgorithm.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o
 .PHONY : HedgeAlgorithm.cpp.o
 
 HedgeAlgorithm.i: HedgeAlgorithm.cpp.i
@@ -158,7 +158,7 @@ HedgeAlgorithm.i: HedgeAlgorithm.cpp.i
 
 # target to preprocess a source file
 HedgeAlgorithm.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/HedgeAlgorithm.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.i
 .PHONY : HedgeAlgorithm.cpp.i
 
 HedgeAlgorithm.s: HedgeAlgorithm.cpp.s
@@ -167,7 +167,7 @@ HedgeAlgorithm.s: HedgeAlgorithm.cpp.s
 
 # target to generate assembly for a file
 HedgeAlgorithm.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/HedgeAlgorithm.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.s
 .PHONY : HedgeAlgorithm.cpp.s
 
 MVEE.o: MVEE.cpp.o
@@ -176,7 +176,7 @@ MVEE.o: MVEE.cpp.o
 
 # target to build an object file
 MVEE.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/MVEE.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MVEE.cpp.o
 .PHONY : MVEE.cpp.o
 
 MVEE.i: MVEE.cpp.i
@@ -185,7 +185,7 @@ MVEE.i: MVEE.cpp.i
 
 # target to preprocess a source file
 MVEE.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/MVEE.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MVEE.cpp.i
 .PHONY : MVEE.cpp.i
 
 MVEE.s: MVEE.cpp.s
@@ -194,7 +194,7 @@ MVEE.s: MVEE.cpp.s
 
 # target to generate assembly for a file
 MVEE.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/MVEE.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MVEE.cpp.s
 .PHONY : MVEE.cpp.s
 
 MirrorDescend.o: MirrorDescend.cpp.o
@@ -203,7 +203,7 @@ MirrorDescend.o: MirrorDescend.cpp.o
 
 # target to build an object file
 MirrorDescend.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/MirrorDescend.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o
 .PHONY : MirrorDescend.cpp.o
 
 MirrorDescend.i: MirrorDescend.cpp.i
@@ -212,7 +212,7 @@ MirrorDescend.i: MirrorDescend.cpp.i
 
 # target to preprocess a source file
 MirrorDescend.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/MirrorDescend.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.i
 .PHONY : MirrorDescend.cpp.i
 
 MirrorDescend.s: MirrorDescend.cpp.s
@@ -221,7 +221,7 @@ MirrorDescend.s: MirrorDescend.cpp.s
 
 # target to generate assembly for a file
 MirrorDescend.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/MirrorDescend.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.s
 .PHONY : MirrorDescend.cpp.s
 
 OnlinePCA.o: OnlinePCA.cpp.o
@@ -230,7 +230,7 @@ OnlinePCA.o: OnlinePCA.cpp.o
 
 # target to build an object file
 OnlinePCA.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/OnlinePCA.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.o
 .PHONY : OnlinePCA.cpp.o
 
 OnlinePCA.i: OnlinePCA.cpp.i
@@ -239,7 +239,7 @@ OnlinePCA.i: OnlinePCA.cpp.i
 
 # target to preprocess a source file
 OnlinePCA.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/OnlinePCA.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.i
 .PHONY : OnlinePCA.cpp.i
 
 OnlinePCA.s: OnlinePCA.cpp.s
@@ -248,8 +248,35 @@ OnlinePCA.s: OnlinePCA.cpp.s
 
 # target to generate assembly for a file
 OnlinePCA.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC__.dir/build.make CMakeFiles/LowRankDescendC__.dir/OnlinePCA.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.s
 .PHONY : OnlinePCA.cpp.s
+
+main.o: main.cpp.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -259,7 +286,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... LowRankDescendC__"
+	@echo "... LowRankDescendC"
 	@echo "... HedgeAlgorithm.o"
 	@echo "... HedgeAlgorithm.i"
 	@echo "... HedgeAlgorithm.s"
@@ -272,6 +299,9 @@ help:
 	@echo "... OnlinePCA.o"
 	@echo "... OnlinePCA.i"
 	@echo "... OnlinePCA.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

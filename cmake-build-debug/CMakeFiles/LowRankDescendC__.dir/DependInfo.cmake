@@ -4,15 +4,21 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.cpp" "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC__.dir/HedgeAlgorithm.cpp.o"
-  "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.cpp" "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC__.dir/MVEE.cpp.o"
-  "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.cpp" "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC__.dir/MirrorDescend.cpp.o"
-  "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.cpp" "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC__.dir/OnlinePCA.cpp.o"
+  "/Users/jiangxuanke/CLionProjects/LowRankStructureC-/HedgeAlgorithm.cpp" "/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles/LowRankDescendC__.dir/HedgeAlgorithm.cpp.o"
+  "/Users/jiangxuanke/CLionProjects/LowRankStructureC-/MVEE.cpp" "/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles/LowRankDescendC__.dir/MVEE.cpp.o"
+  "/Users/jiangxuanke/CLionProjects/LowRankStructureC-/MirrorDescend.cpp" "/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles/LowRankDescendC__.dir/MirrorDescend.cpp.o"
+  "/Users/jiangxuanke/CLionProjects/LowRankStructureC-/OnlinePCA.cpp" "/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles/LowRankDescendC__.dir/OnlinePCA.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "CERES_FOUND"
+  )
+
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/usr/local/Cellar/opencv/4.5.1_3/include/opencv4"
   )
 
 # Targets to which this target links.

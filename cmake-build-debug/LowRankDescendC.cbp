@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="LowRankDescendC__"/>
+		<Option title="LowRankDescendC"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\usr\local\lib\cmake\opencv4\;"/>
@@ -37,8 +37,8 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="LowRankDescendC__">
-				<Option output="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/LowRankDescendC__" prefix_auto="0" extension_auto="0"/>
+			<Target title="LowRankDescendC">
+				<Option output="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/LowRankDescendC" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -53,14 +53,14 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 LowRankDescendC__"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 LowRankDescendC"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="LowRankDescendC__/fast">
-				<Option output="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/LowRankDescendC__" prefix_auto="0" extension_auto="0"/>
+			<Target title="LowRankDescendC/fast">
+				<Option output="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/LowRankDescendC" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -75,7 +75,7 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 LowRankDescendC__/fast"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 LowRankDescendC/fast"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -83,22 +83,31 @@
 			</Target>
 		</Build>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/HedgeAlgorithm.cpp">
-			<Option target="LowRankDescendC__"/>
+			<Option target="LowRankDescendC"/>
+		</Unit>
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/HedgeAlgorithm.h">
+			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/MVEE.cpp">
-			<Option target="LowRankDescendC__"/>
+			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/MVEE.h">
-			<Option target="LowRankDescendC__"/>
+			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/MirrorDescend.cpp">
-			<Option target="LowRankDescendC__"/>
+			<Option target="LowRankDescendC"/>
+		</Unit>
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/MirrorDescend.h">
+			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/OnlinePCA.cpp">
-			<Option target="LowRankDescendC__"/>
+			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/OnlinePCA.h">
-			<Option target="LowRankDescendC__"/>
+			<Option target="LowRankDescendC"/>
+		</Unit>
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/main.cpp">
+			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankStructureC-/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
