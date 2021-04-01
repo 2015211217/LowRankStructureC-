@@ -57,13 +57,11 @@ long double *HedgeAlgorithm() {
                     LtNoise[j] = LtNoise[j] / ((INPUT_DIMENSION * NormTwo(LtNoise, INPUT_DIMENSION)) / 1.0) ;
                     inputVector[j] += LtNoise[j];
                     inputTSum[j] += inputVector[j];
-                    if (inputTSum[j] < 1e-15) inputTSum[j] = 0;
+                    if (inputTSum[j] < 1e-5) inputTSum[j] = 0;
                     cout << inputTSum[j] << endl;
-
 
                     minuend += weightVector[j] * inputVector[j];
                 }
-//                cout << inputTSum[8] << endl;
 
                 // Check Mark
                 long double upperPart[INPUT_DIMENSION];
@@ -78,8 +76,7 @@ long double *HedgeAlgorithm() {
 
                 // Renew weight
                 for (int i = 0;i < INPUT_DIMENSION;i++) {
-//                    cout << upperPart[i] <<endl;
-//                    cout << downPartNumber <<endl;
+
                     weightVector[i] = upperPart[i] / (downPartNumber / 1.0);
                 }
 
@@ -88,11 +85,9 @@ long double *HedgeAlgorithm() {
                     if (inputTSum[i] < substractor)
                         substractor = inputTSum[i];
                 }
-//                cout << minuend << endl;
                 currentRegret += minuend - substractor;
 
             }
-//            cout << currentRegret <<endl;
             regret[regretI] = currentRegret;
             regretI++;
     }
@@ -116,10 +111,7 @@ void HedgeMain() {
     for (int i = 0; i < (INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER) - 1; i++)
         line(img, point[i], point[i+1], Scalar(0, 0, 255), 2);
     imshow("regert - N", img);
-//    for (int i = 0; i < INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER;i++){
-//        cout << baseline[i] << endl;
-//        cout << regret[i] << endl;
-//    }
+
     waitKey();
     cout << "Done" << endl;
 }
