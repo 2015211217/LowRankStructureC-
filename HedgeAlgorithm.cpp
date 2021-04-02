@@ -12,10 +12,6 @@
 using namespace std;
 using namespace cv;
 
-#define INPUT_DIMENSION_UPPER 100
-#define INPUT_DIMENSION_LOWER 4
-#define ROUND 10
-
 long double NormTwo(long double *inputArray, int inputLength) { // Norm calculate
     long double norm = 0;
     for (int j = 0;j < inputLength;j++)
@@ -23,7 +19,7 @@ long double NormTwo(long double *inputArray, int inputLength) { // Norm calculat
     return pow(norm, 0.5);
 }
 
-long double *HedgeAlgorithm() {
+long double *HedgeAlgorithm(int INPUT_DIMENSION_LOWER, int  INPUT_DIMENSION_UPPER, int ROUND) {
     long double regret[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
     int regretI = 0;
     srand(time(NULL));
@@ -94,8 +90,8 @@ long double *HedgeAlgorithm() {
     return regret;
 }
 
-void HedgeMain() {
-    long double *regret = HedgeAlgorithm();
+void HedgeMain(int INPUT_DIMENSION_LOWER, int  INPUT_DIMENSION_UPPER, int ROUND) {
+    long double *regret = HedgeAlgorithm(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, ROUND);
     long double baseline[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
     int TIME_ROUND[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
 

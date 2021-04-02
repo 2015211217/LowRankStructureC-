@@ -11,23 +11,25 @@
 #include "MirrorDescend.h"
 #include <Eigen/Dense>"
 #include <Eigen/Core>"
+#include <unsupported/Eigen/MatrixFunctions>
 
 using namespace std;
 using namespace cv;
+using namespace Eigen;
 
-#define INPUT_DIMENSION_UPPER 100
-#define INPUT_DIMENSION_LOWER 4
-#define INPUT_RANK 3
-#define ROUND 100
 
-double *MirrorDescend() {
-    long double regret[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
+#define ld long double
 
+Matrix<ld , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND) {
+    Matrix<ld, Dynamic, 1> regret;
+    Matrix<ld, Dynamic, 1> regretBound;
+    // INPUT GENERATION
+    
 
 }
 
-void MirrorDescendMain() {
-    long double *regret = MirrorDescend();
+void MirrorDescendMain(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND) {
+    Matrix<long double, -1, -1> regret = MirrorDescend(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, INPUT_RANK, ROUND);
     long double baseline[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
     int TIME_ROUND[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
 
