@@ -9,6 +9,9 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "MirrorDescend.h"
+#include <Eigen/Dense>"
+#include <Eigen/Core>"
+
 using namespace std;
 using namespace cv;
 
@@ -19,7 +22,8 @@ using namespace cv;
 
 double *MirrorDescend() {
     long double regret[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
-    
+
+
 }
 
 void MirrorDescendMain() {
