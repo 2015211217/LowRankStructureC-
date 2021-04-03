@@ -41,7 +41,7 @@ long double *HedgeAlgorithm(int INPUT_DIMENSION_LOWER, int  INPUT_DIMENSION_UPPE
                 long double inputVector[INPUT_DIMENSION];
                 inputVector[INPUT_DIMENSION] = {0};
                 for (int i = 0;i < INPUT_DIMENSION; i++) {
-                    inputVector[i] = (long double) (rand() / (double) RAND_MAX);
+                    inputVector[i] = (-1) + (double) ((rand() / (double) RAND_MAX) * 2);
                 }
 
                 long double LtNoise[INPUT_DIMENSION];

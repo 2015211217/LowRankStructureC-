@@ -37,6 +37,8 @@ Eigen/Dense
 -
 Eigen/Core
 -
+unsupported/Eigen/MatrixFunctions
+-
 
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
 
