@@ -6,17 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.cpp
-iostream
--
-Eigen/Core
--
-Eigen/Dense
--
-unsupported/Eigen/MatrixFunctions
--
-
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.h
+Eigen/Core
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/Core
+Eigen/Dense
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/Dense
 
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.cpp
 iostream
@@ -37,11 +31,25 @@ Eigen/Dense
 -
 Eigen/Core
 -
+Eigen/Eigenvalues
+-
 unsupported/Eigen/MatrixFunctions
 -
 
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
 
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.cpp
+OnlinePCA.h
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
+
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
+iostream
+-
+Eigen/Dense
+-
+Eigen/Core
+-
+OnlinePCA.h
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
 
 /usr/local/Cellar/opencv/4.5.1_3/include/opencv4/opencv2/core.hpp
