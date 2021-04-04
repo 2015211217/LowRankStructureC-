@@ -11,6 +11,8 @@
 #include <Eigen/Core>
 #include <Eigen/Eigenvalues>
 #include <unsupported/Eigen/MatrixFunctions>
+#include "glpk.h"
+
 using namespace std;
 using namespace cv;
 using namespace Eigen;
@@ -161,6 +163,18 @@ Matrix<double , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMEN
             PreviousV = V;
             PreviousM = M;
             // Renew weight
+//        fun = lambda x: np.ravel(eta * np.dot(np.transpose(x), inputAccumulation) + np.dot(
+//            np.dot(x, np.identity(INPUT_DIMENSION) + np.dot(np.dot(V.real, M), np.transpose(V.real))), np.transpose(x)))
+//        cons = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1},)
+//        number = []
+//        for i in range(INPUT_DIMENSION):
+//            number.append(i)
+//        a = tuple(map(cons1, number))
+//        cons = cons + a
+//        OptimizeResult = minimize(fun, weightVector, method='SLSQP', constraints=cons)
+//        weightVector = OptimizeResult['x']
+
+
             // OnlinePCA and MVEE
             double eta_adaptive = log(1 + sqrt(2 * log(INPUT_DIMENSION / T)));
             double alpha = 0.000;

@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.h
+
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.cpp
+iostream
+-
+Eigen/Core
+-
+Eigen/Dense
+-
+unsupported/Eigen/MatrixFunctions
+-
+
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.h
 Eigen/Core
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/Core
@@ -15,7 +27,7 @@ Eigen/Dense
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.cpp
 iostream
 -
-math.h
+cmath
 -
 MVEE.h
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.h
@@ -35,12 +47,20 @@ Eigen/Eigenvalues
 -
 unsupported/Eigen/MatrixFunctions
 -
+glpk.h
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/glpk.h
 
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
 
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.cpp
 OnlinePCA.h
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
+Eigen/SVD
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/SVD
+random
+-
+algorithm
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/algorithm
 
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
 iostream
@@ -51,6 +71,14 @@ Eigen/Core
 -
 OnlinePCA.h
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
+
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/main.cpp
+iostream
+-
+HedgeAlgorithm.h
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.h
+MirrorDescend.h
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
 
 /usr/local/Cellar/opencv/4.5.1_3/include/opencv4/opencv2/core.hpp
 opencv2/core/cvdef.h
