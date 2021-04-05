@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.h
-
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.cpp
-iostream
--
-Eigen/Core
--
-Eigen/Dense
--
-unsupported/Eigen/MatrixFunctions
--
-
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.h
 Eigen/Core
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/Core
@@ -52,16 +40,6 @@ glpk.h
 
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
 
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.cpp
-OnlinePCA.h
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
-Eigen/SVD
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/SVD
-random
--
-algorithm
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/algorithm
-
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
 iostream
 -
@@ -72,13 +50,11 @@ Eigen/Core
 OnlinePCA.h
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
 
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/main.cpp
-iostream
+/usr/local/Cellar/glpk/5.0/include/glpk.h
+stdarg.h
 -
-HedgeAlgorithm.h
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.h
-MirrorDescend.h
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
+stddef.h
+-
 
 /usr/local/Cellar/opencv/4.5.1_3/include/opencv4/opencv2/core.hpp
 opencv2/core/cvdef.h

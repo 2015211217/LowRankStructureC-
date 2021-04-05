@@ -11,7 +11,8 @@
 #include <Eigen/Core>
 #include <Eigen/Eigenvalues>
 #include <unsupported/Eigen/MatrixFunctions>
-#include "glpk.h"
+#include <Python/Python.h>
+
 
 using namespace std;
 using namespace cv;
