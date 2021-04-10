@@ -46,7 +46,7 @@
 				<Compiler>
 					<Add option="-DCERES_FOUND"/>
 					<Add directory="/usr/local/Cellar/eigen/3.3.9"/>
-					<Add directory="/usr/local/Cellar/glpk/5.0/include"/>
+					<Add directory="/Library/gurobi911/mac64/include"/>
 					<Add directory="/usr/local/Cellar/opencv/4.5.1_3/include/opencv4"/>
 					<Add directory="/usr/local/include/eigen3"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
@@ -72,7 +72,7 @@
 				<Compiler>
 					<Add option="-DCERES_FOUND"/>
 					<Add directory="/usr/local/Cellar/eigen/3.3.9"/>
-					<Add directory="/usr/local/Cellar/glpk/5.0/include"/>
+					<Add directory="/Library/gurobi911/mac64/include"/>
 					<Add directory="/usr/local/Cellar/opencv/4.5.1_3/include/opencv4"/>
 					<Add directory="/usr/local/include/eigen3"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>

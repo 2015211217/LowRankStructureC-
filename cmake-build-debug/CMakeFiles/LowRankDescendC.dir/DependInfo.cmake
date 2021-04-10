@@ -20,7 +20,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/Cellar/eigen/3.3.9"
-  "/usr/local/Cellar/glpk/5.0/include"
+  "/Library/gurobi911/mac64/include"
   "/usr/local/Cellar/opencv/4.5.1_3/include/opencv4"
   "/usr/local/include/eigen3"
   )

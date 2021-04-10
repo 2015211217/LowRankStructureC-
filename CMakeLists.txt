@@ -8,18 +8,22 @@ add_executable(LowRankDescendC main.cpp MirrorDescend.h MirrorDescend.cpp HedgeA
 
 find_package(OpenCV)
 find_package(Eigen3 3.3.9)
-find_package(glpk)
+#find_package(glpk)
+find_library(gurobi NAMES gurobi911)
 
 set(OPENCV_ROOT "/usr/local/Cellar/opencv/4.5.1_3")
 set(CMAKE_C_FLAGS "-lgmp")
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(/usr/local/Cellar/eigen/3.3.9)
-include_directories(/usr/local/Cellar/glpk/5.0/include)
+#include_directories(/usr/local/Cellar/glpk/5.0/include)
+include_directories(/Library/gurobi911/mac64/include)
 
 link_directories(/usr/local/Cellar/opencv/4.5.1_3/lib)
-link_directories(/usr/local/Cellar/glpk/5.0/lib)
+#link_directories(/usr/local/Cellar/glpk/5.0/lib)
+link_directories(/Library/gurobi911/mac64/lib)
 
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
 target_link_libraries(${PROJECT_NAME} Eigen3::Eigen)
-target_link_libraries(${PROJECT_NAME} glpk)
+#target_link_libraries(${PROJECT_NAME} glpk)
+target_link_libraries(${PROJECT_NAME} ${gurobi911})

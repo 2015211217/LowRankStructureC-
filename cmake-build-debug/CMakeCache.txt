@@ -233,6 +233,12 @@ GLPK_DIR:PATH=GLPK_DIR-NOTFOUND
 //The directory containing a CMake configuration file for GL.
 GL_DIR:PATH=GL_DIR-NOTFOUND
 
+//Path to a library.
+Gurobi:FILEPATH=Gurobi-NOTFOUND
+
+//The directory containing a CMake configuration file for Gurobi.
+Gurobi_DIR:PATH=Gurobi_DIR-NOTFOUND
+
 //Value Computed by CMake
 LowRankDescendC_BINARY_DIR:STATIC=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug
 
@@ -256,6 +262,15 @@ glpk_DIR:PATH=glpk_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for glplk.
 glplk_DIR:PATH=glplk_DIR-NOTFOUND
+
+//Path to a library.
+gurobi:FILEPATH=gurobi-NOTFOUND
+
+//The directory containing a CMake configuration file for gurobi911.
+gurobi911_DIR:PATH=gurobi911_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for gurobi.
+gurobi_DIR:PATH=gurobi_DIR-NOTFOUND
 
 
 ########################
