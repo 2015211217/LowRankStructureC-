@@ -4,9 +4,12 @@
 #ifndef LOWRANKDESCENDC___ONLINEPCA_H
 #define LOWRANKDESCENDC___ONLINEPCA_H
 #include <iostream>
-#include <Eigen/Dense>
-#include <Eigen/Core>
-#include "OnlinePCA.h"
+#include "Eigen/Dense"
+#include "Eigen/Core"
+#include "Eigen/SVD"
+#include <random>
+#include "algorithm"
+#include "gurobi_c++.h"
 using namespace std;
 using namespace Eigen;
 

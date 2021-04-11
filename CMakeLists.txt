@@ -3,8 +3,9 @@ project(LowRankDescendC)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(LowRankDescendC main.cpp MirrorDescend.h MirrorDescend.cpp HedgeAlgorithm.cpp HedgeAlgorithm.h MVEE.cpp MVEE.h OnlinePCA.cpp OnlinePCA.h)
+add_executable(LowRankDescendC main.cpp MirrorDescend.h MVEE.h MVEE.cpp MirrorDescend.cpp OnlinePCA.cpp OnlinePCA.h  HedgeAlgorithm.cpp HedgeAlgorithm.h)
 #add_executable(LowRankDescendC main.cpp  HedgeAlgorithm.cpp HedgeAlgorithm.h)
+#
 
 find_package(OpenCV)
 find_package(Eigen3 3.3.9)
@@ -18,6 +19,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(/usr/local/Cellar/eigen/3.3.9)
 #include_directories(/usr/local/Cellar/glpk/5.0/include)
 include_directories(/Library/gurobi911/mac64/include)
+include_directories(/Users/jiangxuanke/CLionProjects/LowRankDescendC++/matplotlib-cpp-master)
 
 link_directories(/usr/local/Cellar/opencv/4.5.1_3/lib)
 #link_directories(/usr/local/Cellar/glpk/5.0/lib)

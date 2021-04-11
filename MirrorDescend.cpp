@@ -7,21 +7,20 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "MirrorDescend.h"
-#include <Eigen/Dense>
 #include <Eigen/Core>
 #include <Eigen/Eigenvalues>
-#include <unsupported/Eigen/MatrixFunctions>
-#include <Python/Python.h>
 #include "gurobi_c++.h"
+#include "matplotlibcpp.h"
 
 using namespace std;
 using namespace cv;
 using namespace Eigen;
+using namespace matplotlibcpp;
 
-double NormTwo(Matrix<double, -1, -1> inputArray, int inputLength) { // Norm calculate
+double NormTwo(MatrixXd inputArray, int inputLength) { // Norm calculate
     long double norm = 0;
     for (int j = 0;j < inputLength;j++)
-        norm += pow(abs(inputArray[j]), 2);
+        norm += pow(abs(inputArray(0, j)), 2);
     return pow(norm, 0.5);
 }
 
@@ -93,7 +92,7 @@ Matrix<double , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMEN
             } else {
                 inputAccumulation = inputAccumulation + Lt;
             }
-            currentLossM = currentLossM + (double) weightVector.dot(Lt);
+            currentLossM = currentLossM + weightVector*Lt.transpose();
 //            if (T == 1) {
 //                MatrixXd V;
 ////                Matrix<double, Dynamic, Dynamic> P;
@@ -187,11 +186,10 @@ Matrix<double , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMEN
 
             GRBQuadExpr obj;
             for (int i = 0;i < INPUT_DIMENSION;i++)
-                obj += weightGRB[i] * inputAccumulation[i];
+                obj += weightGRB[i] * inputAccumulation(0, i);
             MatrixXd At;
             MatrixXd Identity;
-            At = Identity.setIdentity(INPUT_DIMENSION, INPUT_DIMENSION) +
-                  (MatrixXd)V.dot((MatrixXd) M.dot(V.transpose()));
+            At = Identity.setIdentity(INPUT_DIMENSION, INPUT_DIMENSION) + V * (M * V.transpose());
 
             for (int i = 0;i < INPUT_DIMENSION;i++)
                 for (int j = 0;j < INPUT_DIMENSION;j++) {
@@ -220,10 +218,13 @@ Matrix<double , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMEN
                     else P(i, j) = 0;
 
             MatrixXd V;
-            EigenSolver<MatrixXd> PSolver(PCAReturn.P);
-            MatrixXd eigenValue =  PSolver.eigenvalues();
+            MatrixXd eigenValue(1, P.cols());
+            MatrixXd eigenVector(P.cols(), P.cols());
 
-            MatrixXd eigenVector = PSolver.eigenvectors();
+            EigenSolver<MatrixXd> PSolver(P);
+            eigenValue =  PSolver.eigenvalues();
+            eigenVector = PSolver.eigenvectors();
+
             int lineCount = 0;
             for(int i = 0;i < INPUT_DIMENSION;i++) {
                 if (eigenValue(i) > 0) {
@@ -245,7 +246,7 @@ Matrix<double , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMEN
 }
 
 void MirrorDescendMain(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND) {
-    Matrix<double, -1, -1> regret = MirrorDescend(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, INPUT_RANK, ROUND);
+    MatrixXd regret = MirrorDescend(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, INPUT_RANK, ROUND);
     double baseline[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
     int TIME_ROUND[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
 
@@ -258,6 +259,7 @@ void MirrorDescendMain(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
     Point point[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
     for (int i = 0; i < (INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER); i++) {
         Point p(TIME_ROUND[i], regret[i]); point[i] = p;}
+
     for (int i = 0; i < (INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER) - 1; i++)
         line(img, point[i], point[i+1], Scalar(0, 0, 255), 2);
     imshow("regert - N", img);

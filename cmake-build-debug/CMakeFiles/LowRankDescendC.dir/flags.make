@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk
 
 CXX_DEFINES = -DCERES_FOUND
 
-CXX_INCLUDES = -I/usr/local/Cellar/eigen/3.3.9 -I/Library/gurobi911/mac64/include -isystem /usr/local/Cellar/opencv/4.5.1_3/include/opencv4 -isystem /usr/local/include/eigen3 
+CXX_INCLUDES = -I/usr/local/Cellar/eigen/3.3.9 -I/Library/gurobi911/mac64/include -I/Users/jiangxuanke/CLionProjects/LowRankDescendC++/matplotlib-cpp-master -isystem /usr/local/Cellar/opencv/4.5.1_3/include/opencv4 -isystem /usr/local/include/eigen3 
 
