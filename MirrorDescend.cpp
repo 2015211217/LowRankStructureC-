@@ -10,12 +10,13 @@
 #include <Eigen/Core>
 #include <Eigen/Eigenvalues>
 #include "gurobi_c++.h"
-#include "matplotlibcpp.h"
+//#include "matplotlibcpp.h"
 
 using namespace std;
 using namespace cv;
 using namespace Eigen;
-using namespace matplotlibcpp;
+//using namespace matplotlibcpp;
+//WITHOUT_NUMPY = true;
 
 double NormTwo(MatrixXd inputArray, int inputLength) { // Norm calculate
     long double norm = 0;
@@ -24,8 +25,9 @@ double NormTwo(MatrixXd inputArray, int inputLength) { // Norm calculate
     return pow(norm, 0.5);
 }
 
-Matrix<double , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND) {
+MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND) {
     Matrix<double, 1, Dynamic> regret;
+    regret.resize(1, INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER);
     Matrix<double, 1, Dynamic> regretBound;
     Matrix<double, Dynamic, Dynamic> inputAccumulation;
     double currentLossM = 0;
@@ -33,16 +35,17 @@ Matrix<double , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMEN
     MatrixXd PreviousM, PreviousV;
 
     for (int INPUT_DIMENSION = INPUT_DIMENSION_LOWER; INPUT_DIMENSION < INPUT_DIMENSION_UPPER + 1 ;INPUT_DIMENSION++) {
+        cout << INPUT_DIMENSION << endl;
         MatrixXd WLast;
         MatrixXd PLast;
         double AccumulatePCA = 0.0;
         // INPUT GENERATION
-        Matrix<double, 1, Dynamic> weightVector;
+        MatrixXd weightVector;
+
         weightVector.resize(1, INPUT_DIMENSION);
         for (int i = 0; i < INPUT_DIMENSION;i++)
             weightVector(0, i) = 1 / (INPUT_DIMENSION/1.0);
-//        cout << weightVector << endl;
-        Matrix<double, Dynamic, Dynamic> INPUT_MATRIX;
+        MatrixXd INPUT_MATRIX;
         INPUT_MATRIX.resize(INPUT_DIMENSION, INPUT_RANK);
         double currentLossM = 0.0;
         while(1) {
@@ -53,13 +56,46 @@ Matrix<double , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMEN
             FullPivLU<MatrixXd> Decomp(INPUT_MATRIX);
             if (Decomp.rank() == INPUT_RANK) break;
         }
-//        cout << INPUT_MATRIX <<endl;
+
         double eta = sqrt(1 / ROUND);
         double AccumulatePartTwo = 0.0;
-        for (int T = 0 ; T < ROUND ; T++) {
-            cout << T;
+        MatrixXd eigenValue;
+        MatrixXd eigenVector;
+
+            MatrixXd PT1;
+            PT1.resize(INPUT_DIMENSION, INPUT_DIMENSION);
+            for (int i = 0;i < INPUT_DIMENSION;i++)
+                for (int j = 0; j < INPUT_DIMENSION;j++)
+                    if (i >= INPUT_DIMENSION-INPUT_RANK and i == j) PT1(i,j) = 1;
+                    else PT1(i,j) = 0;
+            EigenSolver<MatrixXd> PSolver1(PT1);
+            eigenValue =  (PSolver1.eigenvalues().real()).transpose();
+            eigenVector = PSolver1.eigenvectors().real();
+            int count1 = 0;
+            V.resize(INPUT_DIMENSION, INPUT_RANK);
+            for(int i = 0; i < INPUT_DIMENSION;i++) {
+                if (eigenValue(0, i) > 0) {
+                    V.col(count1) = eigenVector.col(i);
+                    count1++;
+                }
+            }
+
+            MatrixXd VMVEE;
+            VMVEE.resize(INPUT_DIMENSION * 2, count1);
+            for(int i = 0;i < count1;i++) {
+                VMVEE.row(i) = V.row(i);
+                VMVEE.row(count1 + i) = (-1) * V.row(i);
+            }
+            M.resize(INPUT_RANK, INPUT_RANK);
+            M = MVEE(INPUT_DIMENSION, INPUT_RANK, VMVEE);
+//            for (int i = 0; i < INPUT_DIMENSION;i++)
+//                V.row(i) = VMVEE.row(i);
+
+
+
+        for (int T = 1 ; T < ROUND + 1 ; T++) {
             // Generate the input
-            Matrix<double, Dynamic, Dynamic> INPUT_V;
+            MatrixXd INPUT_V;
             INPUT_V.resize(1, INPUT_RANK);
             for (int i = 0; i < INPUT_RANK; i++)
                 INPUT_V(0, i) = (-1) + (double) ((rand() / (double) RAND_MAX) * 2);
@@ -87,144 +123,66 @@ Matrix<double , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMEN
                 Lt(0, j) += LtNoise(0, j);
             }
             // Regret and Regret bound
-            if (T == 1) {
+            if (T == 1)
                 inputAccumulation = Lt;
-            } else {
-                inputAccumulation = inputAccumulation + Lt;
+            else inputAccumulation = inputAccumulation + Lt;
+            for(int i = 0; i < weightVector.cols(); i++)
+                currentLossM += weightVector(0, i) * Lt.transpose()(i, 0);
+            regret(0, INPUT_DIMENSION - INPUT_DIMENSION_LOWER) = currentLossM - inputAccumulation.minCoeff();
+
+            try {
+                GRBEnv env = GRBEnv();
+                GRBModel model = GRBModel(env);
+                // create variables
+                GRBVar weightGRB[INPUT_DIMENSION];
+                for (int i = 0; i < INPUT_DIMENSION; i++)
+                    weightGRB[i] = model.addVar(0.0, 1.0, 1.0, GRB_CONTINUOUS);
+                GRBQuadExpr obj;
+                for (int i = 0; i < INPUT_DIMENSION; i++)
+                    obj += weightGRB[i] * inputAccumulation(0, i);
+                MatrixXd At;
+                MatrixXd Identity;
+
+//                cout << V.cols() << endl;
+                At = Identity.setIdentity(INPUT_DIMENSION, INPUT_DIMENSION) + V * (M * V.transpose());
+
+
+                for (int i = 0; i < INPUT_DIMENSION; i++)
+                    for (int j = 0; j < INPUT_DIMENSION; j++) {
+                        obj += weightGRB[i] * weightGRB[j] * At(i, j);
+                    }
+
+                GRBLinExpr lhs = 0;
+                for (int i = 0; i < INPUT_DIMENSION; i++)
+                    lhs += weightGRB[i];
+                model.addConstr(lhs == 1, "c0");
+                model.setObjective(obj, GRB_MINIMIZE);
+                model.optimize();
+
+                for (int i = 0;i < INPUT_DIMENSION;i++)
+                    weightVector(0, i) = weightGRB[i].get(GRB_DoubleAttr_X);
+
+            } catch (GRBException e) {
+                cout << " Error number : " << e.getErrorCode() << endl;
+                cout << e.getMessage() << endl;
             }
-            currentLossM = currentLossM + weightVector*Lt.transpose();
-//            if (T == 1) {
-//                MatrixXd V;
-////                Matrix<double, Dynamic, Dynamic> P;
-//                for(int i = 0;i < INPUT_DIMENSION;i++)
-//                    for (int j = 0;j < INPUT_DIMENSION;j++)
-//                        if(i == j and i >= (INPUT_DIMENSION - INPUT_RANK)) P(i, j) = 0;
-//                        else P(i, j) = 0;
-//
-//                        EigenSolver<MatrixXd> PSolver(P);
-//                        Matrix2d eigenValue =  PSolver.eigenvalues();
-//                        MatrixXd eigenVector = PSolver.eigenvectors();
-//                        int lineCount = 0;
-//                        for(int i = 0;i < INPUT_DIMENSION;i++) {
-//                            if (eigenValue(i) > 0) {
-//                                V.row(lineCount) = ((MatrixXd)eigenVector.col(i)).transpose();
-//                                lineCount++;
-//                            }
-//                        }
-//                    for(int i = 0;i < INPUT_DIMENSION;i++) {
-//                        if (eigenValue(i) > 0) {
-//                            V.row(lineCount) = (-1) * ((MatrixXd)eigenVector.col(i)).transpose();
-//                            lineCount++;
-//                        }
-//                    }
-//                    // Check Mark
-//                    M = MVEE(INPUT_DIMENSION, INPUT_RANK, V);
-//                    MatrixXd  weightBest;
-//                    weightBest.resize(1, INPUT_DIMENSION);
-//                    weightBest.fill(0);
-//                    int argminBest = 0;
-//                    for (int i = 0; i < INPUT_DIMENSION;i++)
-//                        if(inputAccumulation(0, argminBest) < inputAccumulation(0, i)) argminBest = i;
-//                        weightBest(0, argminBest) = 1;
-//                    double PartOne;
-//                    double PartTwo;
-//                    double PartThree;
-//                    double PartFour;
-//                    MatrixXd Identity;
-//                    Identity.setIdentity(INPUT_DIMENSION, INPUT_DIMENSION);
-//                    PartOne = (weightVector * (Identity + V * M * V.transpose()) * weightVector.transpose());
-//                    PartTwo = Lt * Identity * Lt.transpose();
-//                    PartThree = weightVector * weightVector.transpose();
-//                    PartFour = weightVector * (Identity + V * M * V.transpose()) * weightVector.transpose();
-//                    AccumulatePartTwo += PartOne/(2*eta) + (PartThree - PartFour) / (2 * eta);
-//                    regretBound(0, INPUT_DIMENSION - INPUT_DIMENSION_LOWER) = PartOne / (2 * eta) + AccumulatePartTwo;
-//                    regret(0, INPUT_DIMENSION - INPUT_DIMENSION_LOWER) = currentLossM - (double)inputAccumulation.minCoeff();
-//            }
-//            else {
-//                MatrixXd  weightBest;
-//                weightBest.resize(1, INPUT_DIMENSION);
-//                weightBest.fill(0);
-//                int argminBest = 0;
-//                for (int i = 0; i < INPUT_DIMENSION;i++)
-//                    if(inputAccumulation(0, argminBest) < inputAccumulation(0, i)) argminBest = i;
-//                weightBest(0, argminBest) = 1;
-//                double PartOne;
-//                double PartTwo;
-//                double PartThree;
-//                double PartFour;
-//                MatrixXd Identity;
-//                PartOne = weightBest * (Identity + V * M * V.transpose()) * weightBest.transpose();
-//                PartTwo = Lt * (Identity + PreviousV * PreviousM * PreviousV.transpose()) * Lt.transpose();
-//                PartThree = weightVector * (Identity + PreviousV * PreviousM * PreviousV.transpose()) * weightVector;
-//                PartFour = weightVector * (Identity + V * M * V.transpose()) * weightVector.transpose();
-//                AccumulatePartTwo += eta * PartTwo + (PartThree - PartFour) / (2 * eta);
-//                regretBound(0, INPUT_DIMENSION - INPUT_DIMENSION_LOWER) = PartOne / (2 * eta) + AccumulatePartTwo;
-//                regret(0, INPUT_DIMENSION - INPUT_DIMENSION_LOWER) = currentLossM - (double)inputAccumulation.minCoeff();
-//            }
-
-            regret(0, INPUT_DIMENSION - INPUT_DIMENSION_LOWER) = currentLossM - (double) inputAccumulation.minCoeff();
-
-            PreviousV = V;
-            PreviousM = M;
-            // Renew weight
-//        fun = lambda x: np.ravel(eta * np.dot(np.transpose(x), inputAccumulation) + np.dot(
-//            np.dot(x, np.identity(INPUT_DIMENSION) + np.dot(np.dot(V.real, M), np.transpose(V.real))), np.transpose(x)))
-//        cons = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1},)
-//        number = []
-//        for i in range(INPUT_DIMENSION):
-//            number.append(i)
-//        a = tuple(map(cons1, number))
-//        cons = cons + a
-//        OptimizeResult = minimize(fun, weightVector, method='SLSQP', constraints=cons)
-//        weightVector = OptimizeResult['x']
-            GRBEnv env = GRBEnv();
-            GRBModel model = GRBModel(env);
-            // create variables
-            GRBVar *weightGRB;
-            for (int i = 0; i < INPUT_DIMENSION;i++)
-                weightGRB[i] = model.addVar(0, 1, 0.0, GRB_CONTINUOUS);
-
-            GRBQuadExpr obj;
-            for (int i = 0;i < INPUT_DIMENSION;i++)
-                obj += weightGRB[i] * inputAccumulation(0, i);
-            MatrixXd At;
-            MatrixXd Identity;
-            At = Identity.setIdentity(INPUT_DIMENSION, INPUT_DIMENSION) + V * (M * V.transpose());
-
-            for (int i = 0;i < INPUT_DIMENSION;i++)
-                for (int j = 0;j < INPUT_DIMENSION;j++) {
-                    obj += weightGRB[i]*weightGRB[j]*At(i, j);
-                }
-
-            GRBLinExpr lhs = 0;
-            for(int i = 0;i < INPUT_DIMENSION;i++)
-                lhs += weightGRB[i];
-            model.addConstr(lhs == 1, "c0");
-
-            model.setObjective(obj, GRB_MINIMIZE);
-            model.optimize();
-            for (int i = 0;i < INPUT_DIMENSION;i++)
-                weightVector(0, i) = weightGRB[i].get(GRB_DoubleAttr_X);
-
             // OnlinePCA and MVEE
             double eta_adaptive = log(1 + sqrt(2 * log(INPUT_DIMENSION / T)));
             double alpha = 0.000;
-            OnlinePCAReturn PCAReturn;
-            PCAReturn = OnlinePCA(INPUT_DIMENSION, INPUT_RANK, eta, alpha, Lt, WLast, AccumulatePCA, PLast);
-            P = PCAReturn.P;
-            for(int i = 0;i < INPUT_DIMENSION;i++)
-                for (int j = 0;j < INPUT_DIMENSION;j++)
-                    if(i == j and i >= (INPUT_DIMENSION - INPUT_RANK)) P(i, j) = 0;
-                    else P(i, j) = 0;
 
-            MatrixXd V;
-            MatrixXd eigenValue(1, P.cols());
-            MatrixXd eigenVector(P.cols(), P.cols());
+            OnlinePCAReturn PCAReturn;
+
+            PCAReturn = OnlinePCA(INPUT_DIMENSION, INPUT_RANK, eta_adaptive, alpha, Lt, WLast, AccumulatePCA, PLast);
+            P = PCAReturn.Preturn;
+
+//            for(int i = 0;i < INPUT_DIMENSION;i++)
+//                for (int j = 0;j < INPUT_DIMENSION;j++)
+//                    if(i == j and i >= (INPUT_DIMENSION - INPUT_RANK)) P(i, j) = 0;
+//                    else P(i, j) = 0;
 
             EigenSolver<MatrixXd> PSolver(P);
-            eigenValue =  PSolver.eigenvalues();
-            eigenVector = PSolver.eigenvectors();
-
+            eigenValue =  (PSolver.eigenvalues().real()).transpose();
+            eigenVector = PSolver.eigenvectors().real();
             int lineCount = 0;
             for(int i = 0;i < INPUT_DIMENSION;i++) {
                 if (eigenValue(i) > 0) {
@@ -247,23 +205,24 @@ Matrix<double , -1, -1> MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMEN
 
 void MirrorDescendMain(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND) {
     MatrixXd regret = MirrorDescend(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, INPUT_RANK, ROUND);
-    double baseline[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
-    int TIME_ROUND[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
-
-    for (int i = 0; i < (INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER); i++) {
-        baseline[i] = i + 3;
-        TIME_ROUND[i] = i + 1;
-    }
-    Mat img = Mat::zeros(Size(800, 600), CV_8UC3);
-    img.setTo(255);
-    Point point[INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER];
-    for (int i = 0; i < (INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER); i++) {
-        Point p(TIME_ROUND[i], regret[i]); point[i] = p;}
-
-    for (int i = 0; i < (INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER) - 1; i++)
-        line(img, point[i], point[i+1], Scalar(0, 0, 255), 2);
-    imshow("regert - N", img);
-
-    waitKey();
-    cout << "Done" << endl;
+    for (int i = 0;i < regret.cols();i++)
+        cout<<regret(0,i)<<endl;
+//    vector<double> baseline;
+//    vector<double> TIME_ROUND;
+//
+//    for (int i = 0; i < (INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER); i++) {
+//        baseline.push_back(i + 3);
+//        TIME_ROUND.push_back(i+1);
+//    }
+//    vector<double> regretVector;
+//    for(int i = 0;i < regret.cols();i++)
+//        regretVector.push_back(regret(0, i));
+//    figure_size(1200, 780);
+//    plot(TIME_ROUND, baseline, "r--");
+//    plot(TIME_ROUND, regretVector, "b--");
+////    named_plot("MirrorDescend N");
+//    title("MirrorDescend N");
+//    legend();
+//    save("./NPictureC++.png");
+//    cout << "Done" << endl;
 }

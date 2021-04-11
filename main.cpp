@@ -12,6 +12,6 @@ using namespace std;
 
 int main() {
 //    HedgeMain(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, ROUND);
-//    MirrorDescendMain(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, INPUT_RANK, ROUND);
+    MirrorDescendMain(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, INPUT_RANK, ROUND);
     return 0;
 }

@@ -123,11 +123,17 @@ mdl_return mixture_decompose_list(MatrixXd eignval_W, int INPUT_DIMENSION, int I
             MatrixXd idx_gen;
             for (int i = 1;i <= INPUT_DIMENSION;i++) idx_gen(0, i) = i;
             MatrixXd tempSum;
-            tempSum.resize(1, w_use.cols());
+            tempSum.resize(w_use.rows(), w_use.cols());
             tempSum.fill(w_use.sum() / INPUT_RANK);
 
-            diff_corner_val1 = (w_use - tempSum).cwiseAbs();
-            //             idx_init_corner = list(np.where(diff_corner_val1 <= 1e-6)[0])
+//            cout<<w_use.rows()<<endl;
+//            cout<<w_use.cols()<<endl;
+
+            diff_corner_val1 = (w_use - tempSum).array().abs();
+//            for (int i = 0;i < diff_corner_val1.rows();i++)
+//                for (int j = 0;j < diff_corner_val1.cols();j++)
+//                    diff_corner
+//            //             idx_init_corner = list(np.where(diff_corner_val1 <= 1e-6)[0])
             int temp = 0;
             for (int i = 0;i < INPUT_DIMENSION;i++)
                 if(diff_corner_val1(0, i) <= 1e-6) {
@@ -143,9 +149,9 @@ mdl_return mixture_decompose_list(MatrixXd eignval_W, int INPUT_DIMENSION, int I
             if(idx_corner_part.size() < d) { // We need more
                 int diff_num = d - idx_corner_part.size();
                 MatrixXd tempSum;
-                tempSum.resize(1, w_use.cols());
+                tempSum.resize(w_use.rows(), w_use.cols());
                 tempSum.fill(w_use.sum() / d);
-                diff_corner_val2 = (w_use - tempSum).cwiseAbs();
+                diff_corner_val2 = (w_use - tempSum).array().abs();
                 int temp = 0;
                 for (int i = 0; i < INPUT_DIMENSION; i++)
                     if (diff_corner_val2(0, i) > 1e-6) {
@@ -154,7 +160,8 @@ mdl_return mixture_decompose_list(MatrixXd eignval_W, int INPUT_DIMENSION, int I
                     }
                 for (int i = 0; i < idx_init_no_corner.size(); i++)
                     p_no_corner_part(0, temp) = w_use(0, idx_init_no_corner(0, i));
-                pp_test = (p_no_corner_part).cwiseAbs();
+
+                pp_test = (p_no_corner_part).array().abs();
                 pp_test_asd_idx = argsort(pp_test);
                 pp_test_asd_idx = pp_test_asd_idx.reverse();
                 if (pp_test_dsd_idx(0, diff_num - 1) < 1e-8) break;
@@ -244,10 +251,10 @@ MatrixXd capping_alg_lift(MatrixXd w, int n, int k) {
     return w_return;
 }
 
-
 OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, double alpha, MatrixXd Lt, MatrixXd w_last, double AccumulatePCA, MatrixXd PLast) {
     OnlinePCAReturn PCA;
     JacobiSVD<MatrixXd> svd(w_last, ComputeThinU | ComputeThinV);
+
     MatrixXd eignvec_W(w_last.rows(), w_last.rows());
     MatrixXd eignval_W(1, w_last.cols());
     MatrixXd eigvec_W_h(w_last.cols(), w_last.cols());
@@ -270,6 +277,7 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
     MatrixXi r_corner; // idx_pick choose one node.
     MatrixXd p_mediate;
     p_mediate.resize(0, p_dist.cols());
+
     for(int i = 0; i < p_dist.cols();i++)
         p_mediate(0, i) = p_dist(0, i) / p_dist.sum();
     idx_pick = randomChoose(p_mediate, 1, p_dist.cols(), false);
@@ -279,6 +287,7 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
         r_corner(0, temp) = r_candidate(0, idx_pick(0, i));
         temp++;
     }
+
     if(abs(r_corner.sum() - (INPUT_DIMENSION - INPUT_RANK)) > 1e-6) cout << "wrong corner" <<endl;
     MatrixXd Mat_corner, Proj_use_mat, w_hat, w_hat_svd, wReal, PReal;
     MatrixXd r_corner_diag;
@@ -286,6 +295,7 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
     for (int i = 0;i < r_corner.cols();i++) {
         r_corner_diag(0, i) = r_corner(i , i);
     }
+
     Mat_corner = eignvec_W * r_corner_diag * eignvec_W.transpose();
     MatrixXd eye;
     for (int i = 0;i < INPUT_DIMENSION;i++)
@@ -311,7 +321,7 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
     w_hat_svd = w_hat / w_hat.trace();
     w_last = capping_alg_lift(w_hat_svd, INPUT_DIMENSION, INPUT_RANK);
     PCA.PLast = Proj_use_mat;
-    PCA.P = Proj_use_mat;
+    PCA.Preturn = Proj_use_mat;
     PCA.W = w_last;
     PCA.AccumulatePCA = AccumulatePCA;
     return PCA;

@@ -14,11 +14,11 @@ using namespace std;
 using namespace Eigen;
 
 struct OnlinePCAReturn {
-    MatrixXd P;
+    MatrixXd Preturn;
     MatrixXd W;
     double AccumulatePCA;
     MatrixXd PLast;
-}PCAReturn;
+};
 
 OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, double alpha, MatrixXd Lt, MatrixXd w_last, double AccumulatePCA, MatrixXd PLast);
 

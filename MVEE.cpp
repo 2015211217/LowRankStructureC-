@@ -8,8 +8,10 @@
 using namespace std;
 using namespace Eigen;
 
-Matrix<double, -1, -1> MVEE(const int INPUT_DIMENSION, const int INPUT_RANK, Matrix<double, -1, -1>Vm) {
-    Matrix<double, Dynamic, Dynamic> Ek;
+MatrixXd MVEE(const int INPUT_DIMENSION, const int INPUT_RANK, MatrixXd Vm) {
+    MatrixXd Ek;
+    Ek.resize(INPUT_RANK, INPUT_RANK);
+
     for (int j = 0;j < INPUT_RANK;j++) {
         for (int i = 0; i < INPUT_RANK; i++) {
             if (i == j)
@@ -17,8 +19,10 @@ Matrix<double, -1, -1> MVEE(const int INPUT_DIMENSION, const int INPUT_RANK, Mat
             else Ek(i,j) = 0;
         }
     }
+
     for (int i = 0;i < INPUT_DIMENSION * 2 ;i++) {
-        if (sqrt(Vm.row(i) * Ek * Vm.row(i).transpose()) == 0) continue;
+        double tempOne = sqrt(Vm.row(i) * Ek * Vm.row(i).transpose());
+        if (tempOne == 0.0) continue;
 
         if (pow(INPUT_RANK + 1, -(1/2)) * Vm.row(i) * Ek * Vm.row(i).transpose() >= 1) {
 
@@ -28,9 +32,12 @@ Matrix<double, -1, -1> MVEE(const int INPUT_DIMENSION, const int INPUT_RANK, Mat
                 MatrixXd b;
                 for (int k = 0;k < INPUT_RANK ; k++)
                     b = (MatrixXd)((Ek * Vm.row(i).transpose()) / sqrt(Vm.row(i) * Ek * Vm.row(i).transpose()));
+
                 Ek = (INPUT_RANK / (INPUT_RANK - 1)) * (1 - pow(alpha, 2)) * (Ek - (MatrixXd)(b * b.transpose() * (1 - INPUT_RANK * pow(alpha, 2)) / (1 - pow(alpha, 2))));
+
             } else cout << "ERROR FOR MVEE PRECESSION !!" <<endl;
         }
     }
+
     return Ek;
 }

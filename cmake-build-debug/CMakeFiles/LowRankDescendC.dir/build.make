@@ -193,6 +193,8 @@ LowRankDescendC: /usr/local/lib/libopencv_viz.4.5.1.dylib
 LowRankDescendC: /usr/local/lib/libopencv_xfeatures2d.4.5.1.dylib
 LowRankDescendC: /usr/local/lib/libopencv_xobjdetect.4.5.1.dylib
 LowRankDescendC: /usr/local/lib/libopencv_xphoto.4.5.1.dylib
+LowRankDescendC: /Library/gurobi911/mac64/lib/libgurobi_c++.a
+LowRankDescendC: /Library/gurobi911/mac64/lib/libgurobi91.dylib
 LowRankDescendC: /usr/local/lib/libopencv_shape.4.5.1.dylib
 LowRankDescendC: /usr/local/lib/libopencv_highgui.4.5.1.dylib
 LowRankDescendC: /usr/local/lib/libopencv_datasets.4.5.1.dylib

@@ -21,6 +21,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/Cellar/eigen/3.3.9"
   "/Library/gurobi911/mac64/include"
+  "/Library/gurobi911/mac64/bin"
   "../matplotlib-cpp-master"
   "/usr/local/Cellar/opencv/4.5.1_3/include/opencv4"
   "/usr/local/include/eigen3"
