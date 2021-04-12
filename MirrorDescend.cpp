@@ -108,17 +108,16 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
 
         for (int T = 1 ; T < ROUND + 1 ; T++) {
             // Generate the input
+            cout<<"Round" << T << endl;
             MatrixXd INPUT_V;
             INPUT_V.conservativeResize(1, INPUT_RANK);
             for (int i = 0; i < INPUT_RANK; i++)
                 INPUT_V(0, i) = (-1) + (double) ((rand() / (double) RAND_MAX) * 2);
             Matrix<double, 1, Dynamic> Lt;
-
             Lt.conservativeResize(1, INPUT_DIMENSION);
             for (int i = 0; i < INPUT_DIMENSION; i++)
                 for (int j = 0; j < INPUT_RANK; j++)
                     Lt(0, i) += INPUT_MATRIX(i, j) * INPUT_V(0, j);
-
             // Check Mark
             double biggestNorm = MAXFLOAT * (-1);
             for (int i = 0; i < INPUT_DIMENSION; i++)
@@ -126,7 +125,6 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
                     biggestNorm = Lt(0, i);
             for (int i = 0; i < INPUT_DIMENSION; i++)
                 Lt(0, i) /= biggestNorm;
-
             Matrix<double, 1, Dynamic> LtNoise;
             LtNoise.conservativeResize(1, INPUT_DIMENSION);
             for (int j = 0; j < INPUT_DIMENSION; j++)
@@ -134,10 +132,8 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
             for (int j = 0; j < INPUT_DIMENSION; j++) {
                 LtNoise(0, j) /= ((INPUT_DIMENSION * NormTwo(LtNoise, INPUT_DIMENSION)) * 1.0);
                 Lt(0, j) += LtNoise(0, j);
-                if (Lt(0, j) < 1e-8) Lt(0, j) = 0;
+//                if (Lt(0, j) < 1e-8) Lt(0, j) = 0;
             }
-
-
 
             // Regret and Regret bound
             if (T == 1)
@@ -153,7 +149,6 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
             try {
                 GRBEnv env = GRBEnv();
                 env.set(GRB_IntParam_OutputFlag, 0);
-
                 GRBModel model = GRBModel(env);
                 // create variables
                 GRBVar weightGRB[INPUT_DIMENSION];
@@ -166,12 +161,12 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
                 MatrixXd At;
                 MatrixXd Identity;
 
-                for(int i  = 0; i < V.rows();i++)
-                    for (int j = 0;j < V.cols();j++)
-                        if (V(i, j) < 1e-8) V(i, j) = 0;
-                for(int i  = 0; i < M.rows();i++)
-                    for (int j = 0;j < M.cols();j++)
-                        if (M(i, j) < 1e-8) M(i, j) = 0;
+//                for(int i  = 0; i < V.rows();i++)
+//                    for (int j = 0;j < V.cols();j++)
+//                        if (V(i, j) < 1e-8) V(i, j) = 0;
+//                for(int i  = 0; i < M.rows();i++)
+//                    for (int j = 0;j < M.cols();j++)
+//                        if (M(i, j) < 1e-8) M(i, j) = 0;
 
                 At = Identity.setIdentity(INPUT_DIMENSION, INPUT_DIMENSION) + V * (M * V.transpose());
                 for (int i = 0; i < INPUT_DIMENSION; i++)
@@ -197,21 +192,23 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
             double alpha = 0.000;
             OnlinePCAReturn PCAReturn;
 
+            cout<<"PCA Start"<<endl;
 
             PCAReturn = OnlinePCA(INPUT_DIMENSION, INPUT_RANK, eta, alpha, Lt, WLast, AccumulatePCA, PLast);
+            cout<<"PCA Done"<<endl;
 
             P = PCAReturn.Preturn;
             PLast = PCAReturn.PLast;
             AccumulatePCA = PCAReturn.AccumulatePCA;
             WLast = PCAReturn.W;
-            for(int i  = 0; i < WLast.rows();i++)
-                for (int j = 0;j < WLast.cols();j++)
-                    if (WLast(i, j) < 1e-8) WLast(i, j) = 0;
-            for(int i  = 0; i < P.rows();i++)
-                for (int j = 0;j < P.cols();j++) {
-                    if (P(i, j) < 1e-8) P(i, j) = 0;
-                    if (PLast(i, j) < 1e-8) PLast(i, j) = 0;
-                }
+//            for(int i  = 0; i < WLast.rows();i++)
+//                for (int j = 0;j < WLast.cols();j++)
+//                    if (WLast(i, j) < 1e-8) WLast(i, j) = 0;
+//            for(int i  = 0; i < P.rows();i++)
+//                for (int j = 0;j < P.cols();j++) {
+//                    if (P(i, j) < 1e-8) P(i, j) = 0;
+//                    if (PLast(i, j) < 1e-8) PLast(i, j) = 0;
+//                }
 
 
             EigenSolver<MatrixXd> PSolver(P);
