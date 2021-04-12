@@ -41,14 +41,15 @@ MatrixXi argsort(MatrixXd array) {
 
 MatrixXi randomChoose(MatrixXd probablility, int size, int len, bool Replace) { //Choose some from some of that
     MatrixXi randomReturn;
-    randomReturn.conservativeResize(1, len);
+    randomReturn.conservativeResize(1, size);
     // all the replace is false in this algorithm, so we just skip the TRUE side
     double temp = 0;
     for (int i = 0; i < probablility.cols();i++) {
         temp += probablility(0, i);
         probablility(0, i) = temp;
     }
-   while (randomReturn.cols() < size) {
+    int count = 0;
+    while (count < size) {
        double randomI = rand() / double(RAND_MAX);
        for (int j = 0; j < probablility.cols() - 1; j++) {
            if (randomI <= probablility(0, j) and randomI >= probablility(0, j + 1)) {
@@ -57,6 +58,7 @@ MatrixXi randomChoose(MatrixXd probablility, int size, int len, bool Replace) { 
                    if (randomReturn(0, k) == j) break;
                if (k == randomReturn.cols()) {
                    randomReturn(0, k - 1) = j;
+                   count++;
                }
            }
        }
@@ -83,8 +85,7 @@ mdl_return mixture_decompose_list(MatrixXd w_input, int INPUT_DIMENSION, int INP
     MatrixXi idx_no_corner_choice, pp_test_asd_idx, pp_test_dsd_idx;
     MatrixXd idx_init_no_corner;
     MatrixXd w_use = w_input.transpose();
-    cout << w_input << "input" << endl;
-    cout << w_use << "use1" << endl;
+
     double s, l ,p = 1;
     int count_num = 0;
     int countPR = 0;
@@ -99,7 +100,9 @@ mdl_return mixture_decompose_list(MatrixXd w_input, int INPUT_DIMENSION, int INP
 
         if (flagDiffVal0){
             MatrixXd PInside = (MatrixXd)(w_use / (w_use.sum()* 1.0));
+
             idx_corner = randomChoose(PInside, d, w_use.rows(), false);
+
             w_no_select.conservativeResize(1, INPUT_DIMENSION);
             w_no_select.fill(0);
             for (int i = 0; i < INPUT_DIMENSION; i++) {
@@ -121,12 +124,13 @@ mdl_return mixture_decompose_list(MatrixXd w_input, int INPUT_DIMENSION, int INP
             MatrixXd w_use_idx_corner;
             w_use_idx_corner.conservativeResize(1, idx_corner.cols());
             w_use_idx_corner.fill(0);
+            cout<<idx_corner<<"corner"<<endl;
             for (int i = 0;i < idx_corner.cols();i++)
                 w_use_idx_corner(0, i) = w_use(0, idx_corner(0, i));
 
             s = w_use_idx_corner.minCoeff();
             l = w_no_select.maxCoeff();
-            if (s > (w_use.sum() / (d* 1.0) - l)) p = (w_use.sum() / (d* 1.0) - l);
+            if (s > ((w_use.sum() / (d* 1.0)) - l)) p = ((w_use.sum() / (d* 1.0)) - l);
             else p = s;
             p_all.conservativeResize(1, countPR + 1);
             r_all.conservativeResize(countPR + 1, INPUT_DIMENSION);
@@ -144,8 +148,7 @@ mdl_return mixture_decompose_list(MatrixXd w_input, int INPUT_DIMENSION, int INP
             tempSum.conservativeResize(w_use.rows(), w_use.cols());
             tempSum.fill(w_use.sum() / (INPUT_RANK* 1.0));
             diff_corner_val1 = (w_use - tempSum);
-            cout<<w_use<<"w_use"<<endl;
-            cout<<diff_corner_val1<<"diff1"<<endl;
+
 
             int temp = 0;
             idx_init_corner.conservativeResize(1, INPUT_DIMENSION);
@@ -160,9 +163,7 @@ mdl_return mixture_decompose_list(MatrixXd w_input, int INPUT_DIMENSION, int INP
             idx_corner_part.conservativeResize(1, idx_init_corner.cols());
 
             for (int i = 0;i < idx_init_corner.cols();i++) {
-                cout << idx_init_corner << endl;
                 idx_corner_part(0, i) = idx_gen(0, (int)idx_init_corner(0, i));
-
             }
 
             if(idx_corner_part.cols() < d) { // We need more
@@ -185,6 +186,7 @@ mdl_return mixture_decompose_list(MatrixXd w_input, int INPUT_DIMENSION, int INP
                 if (pp_test_dsd_idx(0, diff_num - 1) < 1e-8) break;
                 MatrixXd p_idx_no_corner_choice;
                 p_idx_no_corner_choice.conservativeResize(0, p_no_corner_part.cols());
+
                 for (int i = 0; i < p_no_corner_part.cols();i++)
                     p_idx_no_corner_choice(0, i) = p_no_corner_part(0, i) / (p_no_corner_part.sum()* 1.0);
                 idx_no_corner_choice = randomChoose(p_idx_no_corner_choice, diff_num, p_no_corner_part.cols(), false);
@@ -300,27 +302,20 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
     MatrixXd Identity;
     Identity.setIdentity(INPUT_DIMENSION, INPUT_DIMENSION);
     AccumulatePCA += ((Identity - PLast) * Lt.transpose() * Lt).trace();
-//    cout<<AccumulatePCA<<endl;
-    // mixture_decompose_lift
+
     MatrixXd r_candidate, p_dist;
     mdl_return mdl;
-    cout<<w_last<<"w_last"<<endl;
-    cout<<eignval_W<<"eignVal_W"<<endl;
+
 
     mdl = mixture_decompose_list(eignval_W, INPUT_DIMENSION, INPUT_RANK);
 
     r_candidate = mdl.r_candidate;
     p_dist = mdl.p_dist;
-//    for(int i = 0;i< r_candidate.rows();i++)
-//        cout << r_candidate.row(i)<<endl;
-//    for(int i = 0;i< p_dist.rows();i++)
-//        cout << p_dist.row(i)<<endl;
 
     MatrixXi idx_pick;
     MatrixXi r_corner; // idx_pick choose one node.
     MatrixXd p_mediate;
     p_mediate.conservativeResize(1, p_dist.cols());
-
     for(int i = 0; i < p_dist.cols();i++)
         p_mediate(0, i) = p_dist(0, i) / (p_dist.sum() * 1.0);
     idx_pick = randomChoose(p_mediate, 1, p_dist.cols(), false);
@@ -350,11 +345,12 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
         for (int j = 0;j < INPUT_DIMENSION;j++)
             if(i == j) eye(i,j) = 1;
             else eye(i,j) = 0;
-
+    for (int i = 0;i < Mat_corner.rows();i++)
+        for (int j = 0;j < Mat_corner.cols();j++)
+            if(Mat_corner(i ,j) < 1e-8) Mat_corner(i, j) = 0;
     for (int i = 0;i < INPUT_DIMENSION;i++)
         for(int j =0;j < INPUT_DIMENSION;j++)
             Proj_use_mat(i, j) = eye(i, j) - (INPUT_DIMENSION - INPUT_RANK) * Mat_corner(i ,j);
-
 
     MatrixXd w_last_log;
     w_last_log.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
@@ -382,13 +378,18 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
             w_hat_svd(i, j) = w_hat(i, j) / (w_hat.trace()* 1.0);
 
     w_last = capping_alg_lift(w_hat_svd, INPUT_DIMENSION, INPUT_RANK);
+    for(int i = 0;i < w_last.rows();i++)
+        for(int j = 0;j < w_last.cols();j++)
+            if(w_last(i, j) < 1e-8) w_last(i , j) = 0;
 
     PCA.PLast.conservativeResize(INPUT_DIMENSION,INPUT_DIMENSION);
     PCA.Preturn.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     PCA.W.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     PCA.PLast = Proj_use_mat;
+
     PCA.Preturn = Proj_use_mat;
     PCA.W = w_last;
+
     PCA.AccumulatePCA = AccumulatePCA;
 
     return PCA;
