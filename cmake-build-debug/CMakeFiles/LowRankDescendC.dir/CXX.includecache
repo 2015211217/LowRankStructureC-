@@ -20,11 +20,31 @@ gurobi_c.h
 stdio.h
 -
 
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.cpp
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.h
+Eigen/Core
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/Core
+Eigen/Dense
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/Dense
+
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.cpp
+iostream
+-
+cmath
+-
+MVEE.h
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.h
 OnlinePCA.h
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
-math.h
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/math.h
+MirrorDescend.h
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
+Eigen/Core
+-
+Eigen/Eigenvalues
+-
+gurobi_c++.h
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/gurobi_c++.h
+
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
 
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h
 iostream
