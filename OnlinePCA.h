@@ -9,11 +9,13 @@
 #include "Eigen/SVD"
 #include <random>
 #include "algorithm"
+
 #include "gurobi_c++.h"
 using namespace std;
 using namespace Eigen;
 
 struct OnlinePCAReturn {
+
     MatrixXd Preturn;
     MatrixXd W;
     double AccumulatePCA;

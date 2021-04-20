@@ -31,7 +31,9 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
     random_device rd;
     default_random_engine eng(rd());
     uniform_real_distribution<> distr(-1, 1);
-
+    GRBEnv env = GRBEnv();
+    env.set(GRB_IntParam_OutputFlag, 0);
+    env.set(GRB_IntParam_ScaleFlag, 0);
     for (int INPUT_DIMENSION = INPUT_DIMENSION_LOWER; INPUT_DIMENSION < INPUT_DIMENSION_UPPER + 1 ;INPUT_DIMENSION++) {
         cout << "Input dimension: " << INPUT_DIMENSION << endl;
         MatrixXd WLast;
@@ -146,9 +148,7 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
             regret(0, INPUT_DIMENSION - INPUT_DIMENSION_LOWER) = currentLossM - inputAccumulation.minCoeff();
 
             try {
-                GRBEnv env = GRBEnv();
-                env.set(GRB_IntParam_OutputFlag, 0);
-                env.set(GRB_IntParam_ScaleFlag, 0);
+
 
                 GRBModel model = GRBModel(env);
                 // create variables

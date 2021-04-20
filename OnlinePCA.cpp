@@ -228,7 +228,6 @@ mdl_return mixture_decompose_list(MatrixXd w_input, int INPUT_DIMENSION, int INP
                 tempidx++;
             }
             s = w_use_idx_corner.minCoeff();
-
             if (s < w_use.sum() / (d* 1.0) - l) p = s;
             else p = w_use.sum() / (d* 1.0) - l;
             p_all.conservativeResize(1, countPR + 1);
@@ -244,9 +243,8 @@ mdl_return mixture_decompose_list(MatrixXd w_input, int INPUT_DIMENSION, int INP
             if (countQuit < d) break;
         }
         }
-        if (count_num > 3 * INPUT_DIMENSION) {
+        if (count_num > 3 * INPUT_DIMENSION)
             cout << "too many steps for decomposition, something wrong" <<endl;
-        }
 
     mdl_return mdl;
     mdl.r_candidate = r_all;
@@ -352,24 +350,19 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
             if (i == j) r_corner_diag(i, i) = r_corner(0, i);
             else r_corner_diag(i, j) = 0;
     }
-
     Mat_corner = eignvec_W * r_corner_diag * eignvec_W.transpose();
-
     MatrixXd eye;
     eye.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     for (int i = 0;i < INPUT_DIMENSION;i++)
         for (int j = 0;j < INPUT_DIMENSION;j++)
             if(i == j) eye(i,j) = 1;
             else eye(i,j) = 0;
-
     for (int i = 0;i < INPUT_DIMENSION;i++)
         for(int j =0;j < INPUT_DIMENSION;j++)
             Proj_use_mat(i, j) = eye(i, j) - (INPUT_DIMENSION - INPUT_RANK) * Mat_corner(i ,j);
-
     MatrixXd w_last_log;
     w_last_log.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     w_last_log = w_last.log();
-
     MatrixXd eta_lt_lt;
     MatrixXd lt_outer;
     lt_outer.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
@@ -378,18 +371,14 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
     for (int i = 0;i < INPUT_DIMENSION;i++)
         for (int j = 0;j < INPUT_DIMENSION;j++)
             eta_lt_lt(i, j) = eta * lt_outer(i, j);
-
     w_hat.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     w_hat = w_last_log - eta_lt_lt;
     w_hat = w_hat.exp();
-
     w_hat_svd.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     for (int i = 0; i < INPUT_DIMENSION;i++)
         for (int j = 0;j < INPUT_DIMENSION;j++)
             w_hat_svd(i, j) = w_hat(i, j) / (w_hat.trace()* 1.0);
-
     w_last = capping_alg_lift(w_hat_svd, INPUT_DIMENSION, INPUT_RANK);
-
     PCA.PLast.conservativeResize(INPUT_DIMENSION,INPUT_DIMENSION);
     PCA.Preturn.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     PCA.W.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
