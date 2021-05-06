@@ -15,7 +15,6 @@ using namespace std;
 using namespace Eigen;
 
 struct OnlinePCAReturn {
-
     MatrixXd Preturn;
     MatrixXd W;
     double AccumulatePCA;
