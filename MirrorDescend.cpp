@@ -3,7 +3,7 @@
 # include <iostream>
 # include <cmath>
 # include "MVEE.h"
-# include "OnlinePCA.h"
+# include "OnlinePCANewVersion.h"
 
 #include "MirrorDescend.h"
 #include <Eigen/Core>
@@ -200,11 +200,13 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
             }
             lineCount--;
             VMVEE.conservativeResize(INPUT_DIMENSION * 2, lineCount);
+
             for(int i = 0;i < INPUT_DIMENSION;i++) {
                 VMVEE.row(i) = V.row(i);
                 for(int j = 0;j < lineCount ; j++)
                     VMVEE(INPUT_DIMENSION + i, j) = (-1) * V(i, j);
             }
+
             M = MVEE(INPUT_DIMENSION, INPUT_RANK, VMVEE);
         }
         cout << regret <<endl;

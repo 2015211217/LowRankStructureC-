@@ -224,32 +224,32 @@ MirrorDescend.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.s
 .PHONY : MirrorDescend.cpp.s
 
-OnlinePCA.o: OnlinePCA.cpp.o
+OnlinePCANewVersion.o: OnlinePCANewVersion.cpp.o
 
-.PHONY : OnlinePCA.o
+.PHONY : OnlinePCANewVersion.o
 
 # target to build an object file
-OnlinePCA.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.o
-.PHONY : OnlinePCA.cpp.o
+OnlinePCANewVersion.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o
+.PHONY : OnlinePCANewVersion.cpp.o
 
-OnlinePCA.i: OnlinePCA.cpp.i
+OnlinePCANewVersion.i: OnlinePCANewVersion.cpp.i
 
-.PHONY : OnlinePCA.i
+.PHONY : OnlinePCANewVersion.i
 
 # target to preprocess a source file
-OnlinePCA.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.i
-.PHONY : OnlinePCA.cpp.i
+OnlinePCANewVersion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.i
+.PHONY : OnlinePCANewVersion.cpp.i
 
-OnlinePCA.s: OnlinePCA.cpp.s
+OnlinePCANewVersion.s: OnlinePCANewVersion.cpp.s
 
-.PHONY : OnlinePCA.s
+.PHONY : OnlinePCANewVersion.s
 
 # target to generate assembly for a file
-OnlinePCA.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.s
-.PHONY : OnlinePCA.cpp.s
+OnlinePCANewVersion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.s
+.PHONY : OnlinePCANewVersion.cpp.s
 
 main.o: main.cpp.o
 
@@ -296,9 +296,9 @@ help:
 	@echo "... MirrorDescend.o"
 	@echo "... MirrorDescend.i"
 	@echo "... MirrorDescend.s"
-	@echo "... OnlinePCA.o"
-	@echo "... OnlinePCA.i"
-	@echo "... OnlinePCA.s"
+	@echo "... OnlinePCANewVersion.o"
+	@echo "... OnlinePCANewVersion.i"
+	@echo "... OnlinePCANewVersion.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -7,7 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.cpp" "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o"
   "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.cpp" "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC.dir/MVEE.cpp.o"
   "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.cpp" "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o"
-  "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.cpp" "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.o"
+  "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.cpp" "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o"
   "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/main.cpp" "/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")

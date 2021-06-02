@@ -116,22 +116,9 @@ CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.cpp -o CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.s
 
-CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.o: CMakeFiles/LowRankDescendC.dir/flags.make
-CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.o: ../OnlinePCA.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.o -c /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.cpp
-
-CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.cpp > CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.i
-
-CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.cpp -o CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.s
-
 CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o: CMakeFiles/LowRankDescendC.dir/flags.make
 CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o: ../HedgeAlgorithm.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o -c /Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.cpp
 
 CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.i: cmake_force
@@ -142,13 +129,26 @@ CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.cpp -o CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.s
 
+CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o: CMakeFiles/LowRankDescendC.dir/flags.make
+CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o: ../OnlinePCANewVersion.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o -c /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.cpp
+
+CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.cpp > CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.i
+
+CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.cpp -o CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.s
+
 # Object files for target LowRankDescendC
 LowRankDescendC_OBJECTS = \
 "CMakeFiles/LowRankDescendC.dir/main.cpp.o" \
 "CMakeFiles/LowRankDescendC.dir/MVEE.cpp.o" \
 "CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o" \
-"CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.o" \
-"CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o"
+"CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o" \
+"CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o"
 
 # External object files for target LowRankDescendC
 LowRankDescendC_EXTERNAL_OBJECTS =
@@ -156,8 +156,8 @@ LowRankDescendC_EXTERNAL_OBJECTS =
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/main.cpp.o
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/MVEE.cpp.o
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o
-LowRankDescendC: CMakeFiles/LowRankDescendC.dir/OnlinePCA.cpp.o
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o
+LowRankDescendC: CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/build.make
 LowRankDescendC: /usr/local/lib/libopencv_gapi.4.5.1.dylib
 LowRankDescendC: /usr/local/lib/libopencv_stitching.4.5.1.dylib

@@ -112,10 +112,10 @@
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h">
 			<Option target="LowRankDescendC"/>
 		</Unit>
-		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.cpp">
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.cpp">
 			<Option target="LowRankDescendC"/>
 		</Unit>
-		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCA.h">
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.h">
 			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/main.cpp">
