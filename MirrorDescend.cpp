@@ -48,7 +48,8 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
         for (int i = 0;i < INPUT_DIMENSION;i++)
             for (int j = 0;j < INPUT_DIMENSION;j++) {
                 if (i == j) {
-                    WLast(i, j) = ((INPUT_DIMENSION - INPUT_RANK) / (INPUT_DIMENSION * 1.0));
+                    WLast(i, j) = ((INPUT_DIMENSION - INPUT_RANK) / ( INPUT_DIMENSION * 1.0));
+//                    WLast(i, j) = ((INPUT_DIMENSION - INPUT_RANK) / (INPUT_DIMENSION * 1.0));
                     PLast(i, j) = (INPUT_RANK / (INPUT_DIMENSION * 1.0));
                 }
                 else {
@@ -56,10 +57,10 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
                     PLast(i, j) = 0;
                 }
             }
-
         weightVector.resize(1, INPUT_DIMENSION);
         for (int i = 0; i < INPUT_DIMENSION;i++)
-            weightVector(0, i) = 1 / (INPUT_DIMENSION/1.0);
+            weightVector(0, i) = 1 / (INPUT_DIMENSION * 1.0);
+
         MatrixXd INPUT_MATRIX;
         INPUT_MATRIX.resize(INPUT_DIMENSION, INPUT_RANK);
         double currentLossM = 0.0;
@@ -71,14 +72,12 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
             FullPivLU<MatrixXd> Decomp(INPUT_MATRIX);
             if (Decomp.rank() == INPUT_RANK) break;
         }
-
         double eta = sqrt(1 / (ROUND * 1.0));
         double eta_adaptive  = log(1 + sqrt(2 * log(INPUT_DIMENSION) / (ROUND * 1.0)));
 //        double eta = 0;
         double AccumulatePartTwo = 0.0;
         MatrixXd eigenValue;
         MatrixXd eigenVector;
-
             MatrixXd PT1;
             PT1.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
             for (int i = 0;i < INPUT_DIMENSION;i++)
@@ -96,7 +95,6 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
                     count1++;
                 }
             }
-
             MatrixXd VMVEE;
             VMVEE.conservativeResize(INPUT_DIMENSION * 2, count1);
             for(int i = 0;i < count1;i++) {
@@ -105,22 +103,18 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
             }
             M.conservativeResize(INPUT_RANK, INPUT_RANK);
             M = MVEE(INPUT_DIMENSION, INPUT_RANK, VMVEE);
-
         for (int T = 1 ; T < ROUND + 1 ; T++) {
             // Generate the input
             MatrixXd INPUT_V;
             INPUT_V.conservativeResize(1, INPUT_RANK);
             for (int i = 0; i < INPUT_RANK; i++)
                 INPUT_V(0, i) = distr(eng);
-
             Matrix<double, 1, Dynamic> Lt;
             Lt.conservativeResize(1, INPUT_DIMENSION);
             Lt.fill(0);
             for (int i = 0; i < INPUT_DIMENSION; i++)
                 for (int j = 0; j < INPUT_RANK; j++)
                     Lt(0, i) += INPUT_MATRIX(i, j) * INPUT_V(0, j);
-            // Check Mark
-
             double biggestNorm = MAXFLOAT * (-1);
             for (int i = 0; i < INPUT_DIMENSION; i++)
                 if (biggestNorm < Lt(0, i))
@@ -143,13 +137,9 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
                 inputAccumulation(0, i) = inputAccumulation(0, i) + Lt(0, i);
             for(int i = 0; i < weightVector.cols(); i++)
                 currentLossM += weightVector(0, i) * Lt.transpose()(i, 0);
-//            cout << currentLossM << endl;
-//            cout << inputAccumulation << endl;
             regret(0, INPUT_DIMENSION - INPUT_DIMENSION_LOWER) = currentLossM - inputAccumulation.minCoeff();
 
             try {
-
-
                 GRBModel model = GRBModel(env);
                 // create variables
                 GRBVar weightGRB[INPUT_DIMENSION];
@@ -178,6 +168,7 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
                 cout << " Error number : " << e.getErrorCode() << endl;
                 cout << e.getMessage() << endl;
             }
+
             double alpha = 0.000;
             OnlinePCAReturn PCAReturn;
             PCAReturn = OnlinePCA(INPUT_DIMENSION, INPUT_RANK, eta_adaptive, alpha, Lt, WLast, AccumulatePCA, PLast);
@@ -186,11 +177,14 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
             PLast = PCAReturn.PLast;
             AccumulatePCA = PCAReturn.AccumulatePCA;
             WLast = PCAReturn.W;
+//            cout << "P" <<endl;
+//            cout << P << endl << endl;
 
             EigenSolver<MatrixXd> PSolver(P);
             eigenValue =  (PSolver.eigenvalues().real()).transpose();
             eigenVector = PSolver.eigenvectors().real();
             int lineCount = 1;
+
             for(int i = 0;i < INPUT_DIMENSION;i++) {
                 if (eigenValue(0, i) > 1e-5) {
                     V.conservativeResize(INPUT_DIMENSION, lineCount);
@@ -200,14 +194,13 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
             }
             lineCount--;
             VMVEE.conservativeResize(INPUT_DIMENSION * 2, lineCount);
-
             for(int i = 0;i < INPUT_DIMENSION;i++) {
                 VMVEE.row(i) = V.row(i);
                 for(int j = 0;j < lineCount ; j++)
                     VMVEE(INPUT_DIMENSION + i, j) = (-1) * V(i, j);
             }
-
             M = MVEE(INPUT_DIMENSION, INPUT_RANK, VMVEE);
+
         }
         cout << regret <<endl;
     }

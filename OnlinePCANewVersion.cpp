@@ -112,7 +112,6 @@ mdl_return mixture_decompose_list(MatrixXd w_Input, int INPUT_DIMENSION, int INP
 //    r.resize(0, INPUT_DIMENSION);
     MatrixXd w_input = w_Input;
 //    p.resize(1, 0);
-
     while(firstNorm(w_input) > 1e-3) {
         currentR.resize(1, INPUT_DIMENSION);
         currentR.fill(0);
@@ -128,6 +127,7 @@ mdl_return mixture_decompose_list(MatrixXd w_Input, int INPUT_DIMENSION, int INP
         // But we need to know the sequence of it.
         MatrixXd rankWInput = w_input;
         while (countR < d) {
+            //
             double temp = 0.0;
             int notation;
             for(int i = 0;i < w_input.rows();i++) {
@@ -137,28 +137,32 @@ mdl_return mixture_decompose_list(MatrixXd w_Input, int INPUT_DIMENSION, int INP
                 }
             }
             rankWInput(notation, 0) = 0;
-            currentR(0, notation) = temp;
+            currentR(0, notation) = 1/(1.0 * d);
             countR++;
         }
-
-        MatrixXd SortR = BubbleSort(currentR);
+        for (int i = 0 ;i < currentR.cols();i++) {
+            if (currentR(0, i) > 0)
+                currentR(0, i) = 1 / (1.0 * d);
+        }
+        // Two places to modify
+        MatrixXd SortWeight = BubbleSort(w_input.transpose());
         //  s: smallest of chosen; l: the largest one for not chosen.
         double s, l, currentP;
-        s = SortR(0, d - 1);
-        l = SortR(0, d);
+        s = SortWeight(0, d - 1);
+        l = SortWeight(0, d);
+//        cout << SortWeight <<endl;
         // renew weight and adding p
         if (d * s < (norm1WInput - d * l)) currentP = d*s;
         else currentP = norm1WInput - d * l;
-        for (int i = 0;i < w_input.rows();i++)
+        for (int i = 0; i < w_input.rows(); i++)
             w_input(i, 0) -= currentP * currentR(0, i);
         p.conservativeResize(1, p.cols() + 1);
         p(0, p.cols() - 1) = currentP;
         r.conservativeResize(r.rows() + 1, INPUT_DIMENSION);
         r.row(r.rows()-1) = currentR;
-//        cout << r <<endl;
-//        cout << w_input <<endl;
-    }
+//        cout << w_input << endl;
 
+    }
     mdl_return mdl;
     mdl.r_candidate = r;
     mdl.p_dist = p;
@@ -235,25 +239,34 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
     AccumulatePCA += ((Identity - PLast) * Lt.transpose() * Lt).trace();
     MatrixXd r_candidate, p_dist;
     mdl_return mdl;
-    mdl = mixture_decompose_list(eignval_W, INPUT_DIMENSION, INPUT_RANK);
 
+    cout << "start " <<endl;
+    cout << eignval_W << endl;
+    mdl = mixture_decompose_list(eignval_W, INPUT_DIMENSION, INPUT_RANK);
     r_candidate = mdl.r_candidate;
     p_dist = mdl.p_dist;
+    cout << "end " <<endl;
 
     MatrixXi idx_pick;
     MatrixXi r_corner; // idx_pick choose one node.
     MatrixXd p_mediate;
     p_mediate.conservativeResize(1, p_dist.cols());
+    p_mediate.fill(0);
     for(int i = 0; i < p_dist.cols();i++)
         p_mediate(0, i) = p_dist(0, i) / (p_dist.sum() * 1.0);
+
     idx_pick = randomChoose(p_mediate, 1, p_dist.cols(), false);
+    int whatever = idx_pick(0, 0);
 
-    r_corner.conservativeResize(1, r_candidate.cols());
-    for(int i  = 0;i < r_candidate.cols();i++) {
-        r_corner(0, i) = r_candidate(idx_pick(0, 0), i);
-    }
-
-    if(abs(r_corner.sum() - (INPUT_DIMENSION - INPUT_RANK)) > 0.5) cout << "wrong corner" <<endl;
+//    r_corner.resize(1, r_candidate.cols());
+//    r_corner.fill(0);
+//    cout << r_candidate << endl;
+//    cout << whatever << endl;
+//    for (int i = 0; i < r_corner.cols();i++) {
+//        r_corner(0, i) = r_candidate(whatever, i);
+//        cout << "count" << i << endl << r_candidate(whatever, i) << endl << r_corner << endl;
+//    }
+//    if(abs(r_corner.sum() - 1) > 1e-6) cout << "wrong corner" <<endl;
 
     MatrixXd Mat_corner, Proj_use_mat, w_hat, w_hat_svd, wReal, PReal;
     MatrixXd r_corner_diag;
@@ -262,20 +275,24 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
 
     for (int i = 0;i < INPUT_DIMENSION;i++) {
         for (int j = 0;j < INPUT_DIMENSION;j++)
-            if (i == j) r_corner_diag(i, i) = r_corner(0, i);
+            if (i == j) r_corner_diag(i, i) = r_candidate(whatever, i);
             else r_corner_diag(i, j) = 0;
     }
+
     Mat_corner = eignvec_W * r_corner_diag * eignvec_W.transpose();
+
     MatrixXd eye;
     eye.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     for (int i = 0;i < INPUT_DIMENSION;i++)
         for (int j = 0;j < INPUT_DIMENSION;j++)
             if(i == j) eye(i,j) = 1;
             else eye(i,j) = 0;
+
     for (int i = 0;i < INPUT_DIMENSION;i++)
         for(int j =0;j < INPUT_DIMENSION;j++)
             Proj_use_mat(i, j) = eye(i, j) - (INPUT_DIMENSION - INPUT_RANK) * Mat_corner(i ,j);
     MatrixXd w_last_log;
+
     w_last_log.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     w_last_log = w_last.log();
     MatrixXd eta_lt_lt;
@@ -286,6 +303,7 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
     for (int i = 0;i < INPUT_DIMENSION;i++)
         for (int j = 0;j < INPUT_DIMENSION;j++)
             eta_lt_lt(i, j) = eta * lt_outer(i, j);
+
     w_hat.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     w_hat = w_last_log - eta_lt_lt;
     w_hat = w_hat.exp();
@@ -293,8 +311,8 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
     for (int i = 0; i < INPUT_DIMENSION;i++)
         for (int j = 0;j < INPUT_DIMENSION;j++)
             w_hat_svd(i, j) = w_hat(i, j) / (w_hat.trace()* 1.0);
-
     w_last = capping_alg_lift(w_hat_svd, INPUT_DIMENSION, INPUT_RANK);
+
     PCA.PLast.conservativeResize(INPUT_DIMENSION,INPUT_DIMENSION);
     PCA.Preturn.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
     PCA.W.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);

@@ -20,6 +20,7 @@ MatrixXd MVEE(const int INPUT_DIMENSION, const int INPUT_RANK, MatrixXd Vm) {
     }
 
     for (int i = 0;i < INPUT_DIMENSION * 2 ;i++) {
+//        cout << Vm.row(i) << endl;
         double tempOne = sqrt(Vm.row(i) * Ek * Vm.row(i).transpose());
         if (tempOne == 0.0) continue;
 

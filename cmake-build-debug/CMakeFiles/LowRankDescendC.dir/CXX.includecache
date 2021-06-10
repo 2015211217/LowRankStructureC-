@@ -20,12 +20,6 @@ gurobi_c.h
 stdio.h
 -
 
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.cpp
-iostream
--
-Eigen/Core
--
-
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.h
 Eigen/Core
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/Core
@@ -51,6 +45,14 @@ gurobi_c++.h
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/gurobi_c++.h
 
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
+
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.cpp
+OnlinePCANewVersion.h
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.h
+math.h
+/Users/jiangxuanke/CLionProjects/LowRankDescendC++/math.h
+unsupported/Eigen/MatrixFunctions
+-
 
 /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.h
 iostream
@@ -1125,4 +1127,46 @@ lapacke_mangling.h
 /usr/local/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h
 
 /usr/local/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
+
+/usr/local/include/eigen3/unsupported/Eigen/MatrixFunctions
+cfloat
+-
+list
+-
+Eigen/Core
+-
+Eigen/LU
+-
+Eigen/Eigenvalues
+-
+src/MatrixFunctions/MatrixExponential.h
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixExponential.h
+src/MatrixFunctions/MatrixFunction.h
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixFunction.h
+src/MatrixFunctions/MatrixSquareRoot.h
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixSquareRoot.h
+src/MatrixFunctions/MatrixLogarithm.h
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixLogarithm.h
+src/MatrixFunctions/MatrixPower.h
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixPower.h
+unsupported/Eigen/MatrixFunctions
+-
+iostream
+-
+
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixExponential.h
+StemFunction.h
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/StemFunction.h
+
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixFunction.h
+StemFunction.h
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/StemFunction.h
+
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixLogarithm.h
+
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixPower.h
+
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixSquareRoot.h
+
+/usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/StemFunction.h
 
