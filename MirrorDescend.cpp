@@ -9,6 +9,8 @@
 #include <Eigen/Core>
 #include <Eigen/Eigenvalues>
 #include "gurobi_c++.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 using namespace Eigen;
@@ -20,12 +22,11 @@ double NormTwo(MatrixXd inputArray, int inputLength) { // Norm calculate
     return pow(norm, 0.5);
 }
 
-MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND) {
+MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND, int KAISHU) {
     Matrix<double, 1, Dynamic> regret;
     regret.conservativeResize(1, INPUT_DIMENSION_UPPER - INPUT_DIMENSION_LOWER + 1);
     Matrix<double, 1, Dynamic> regretBound;
     Matrix<double, Dynamic, Dynamic> inputAccumulation;
-    double currentLossM = 0;
     MatrixXd M, V, P;
     MatrixXd PreviousM, PreviousV;
     random_device rd;
@@ -103,36 +104,70 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
             }
             M.conservativeResize(INPUT_RANK, INPUT_RANK);
             M = MVEE(INPUT_DIMENSION, INPUT_RANK, VMVEE);
+
+        MatrixXd LtCollection;
+        // mark
+        LtCollection.resize(2000000, INPUT_DIMENSION);
+        LtCollection.fill(0);
+
+        // mark
+        Matrix<double, 1, Dynamic> Lt;
+        Lt.conservativeResize(1, INPUT_DIMENSION);
+        Lt.fill(0);
+
+        MatrixXd LtCollectionRound10;
+        LtCollectionRound10.resize(KAISHU, INPUT_DIMENSION);
+        LtCollectionRound10.fill(0);
+
+        double kaishuLoss = -10000;
+        int mark = 0;
         for (int T = 1 ; T < ROUND + 1 ; T++) {
             // Generate the input
-            MatrixXd INPUT_V;
-            INPUT_V.conservativeResize(1, INPUT_RANK);
-            for (int i = 0; i < INPUT_RANK; i++)
-                INPUT_V(0, i) = distr(eng);
-            Matrix<double, 1, Dynamic> Lt;
-            Lt.conservativeResize(1, INPUT_DIMENSION);
-            Lt.fill(0);
-            for (int i = 0; i < INPUT_DIMENSION; i++)
-                for (int j = 0; j < INPUT_RANK; j++)
-                    Lt(0, i) += INPUT_MATRIX(i, j) * INPUT_V(0, j);
-            double biggestNorm = MAXFLOAT * (-1);
-            for (int i = 0; i < INPUT_DIMENSION; i++)
-                if (biggestNorm < Lt(0, i))
-                    biggestNorm = Lt(0, i);
-            for (int i = 0; i < INPUT_DIMENSION; i++)
-                Lt(0, i) /= (biggestNorm * 1.0);
+            kaishuLoss = -10000;
+            mark = 0;
+            LtCollectionRound10.fill(0);
+            for (int m = 0 ; m < KAISHU ; m++) {
+                MatrixXd INPUT_V;
+                INPUT_V.conservativeResize(1, INPUT_RANK);
+                for (int i = 0; i < INPUT_RANK; i++)
+                    INPUT_V(0, i) = distr(eng);
 
-            Matrix<double, 1, Dynamic> LtNoise;
-            LtNoise.conservativeResize(1, INPUT_DIMENSION);
-            for (int j = 0; j < INPUT_DIMENSION; j++)
-                LtNoise(0, j) = distr(eng);
-            for (int j = 0; j < INPUT_DIMENSION; j++) {
-                LtNoise(0, j) /= ((INPUT_DIMENSION * NormTwo(LtNoise, INPUT_DIMENSION)) * 1.0);
-                Lt(0, j) += LtNoise(0, j);
+                for (int i = 0; i < INPUT_DIMENSION; i++)
+                    for (int j = 0; j < INPUT_RANK; j++)
+                        Lt(0, i) += INPUT_MATRIX(i, j) * INPUT_V(0, j);
+                double biggestNorm = MAXFLOAT * (-1);
+                for (int i = 0; i < INPUT_DIMENSION; i++)
+                    if (biggestNorm < Lt(0, i))
+                        biggestNorm = Lt(0, i);
+                for (int i = 0; i < INPUT_DIMENSION; i++)
+                    Lt(0, i) /= (biggestNorm * 1.0);
+
+                Matrix<double, 1, Dynamic> LtNoise;
+                LtNoise.conservativeResize(1, INPUT_DIMENSION);
+                for (int j = 0; j < INPUT_DIMENSION; j++)
+                    LtNoise(0, j) = distr(eng);
+                for (int j = 0; j < INPUT_DIMENSION; j++) {
+                    LtNoise(0, j) /= ((INPUT_DIMENSION * NormTwo(LtNoise, INPUT_DIMENSION)) * 1.0);
+                    Lt(0, j) += LtNoise(0, j);
+                }
+
+                for(int i = 0;i < INPUT_DIMENSION;i++)
+                    inputAccumulation(0, i) = inputAccumulation(0, i) + Lt(0, i);
+                for(int i = 0; i < weightVector.cols(); i++)
+                    currentLossM += weightVector(0, i) * Lt.transpose()(i, 0);
+                if(currentLossM - inputAccumulation.minCoeff() > kaishuLoss) {
+                    kaishuLoss = currentLossM - inputAccumulation.minCoeff();
+                    mark = m;
+                }
+                LtCollectionRound10.row(m) = Lt.row(0);
+                LtCollection.row((T - 1) * KAISHU + m) = Lt.row(0);
             }
 
+
+            Lt.row(0) = LtCollectionRound10.row(mark);
+
             // Regret and Regret bound
-            currentLossM = 0;
+
             for(int i = 0;i < INPUT_DIMENSION;i++)
                 inputAccumulation(0, i) = inputAccumulation(0, i) + Lt(0, i);
             for(int i = 0; i < weightVector.cols(); i++)
@@ -203,10 +238,17 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
 
         }
         cout << regret <<endl;
+// write the file
+         ofstream fout("LtCollection");
+         if (fout)
+             fout << LtCollection <<endl;
+         else cout << "File cannot be opened" << endl;
+         fout.close();
+//        cout << LtCollection << endl;
     }
     return regret;
 }
 
-void MirrorDescendMain(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND) {
-    MatrixXd regret = MirrorDescend(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, INPUT_RANK, ROUND);
+void MirrorDescendMain(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND, int KAISHU) {
+    MatrixXd regret = MirrorDescend(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, INPUT_RANK, ROUND, KAISHU);
 }

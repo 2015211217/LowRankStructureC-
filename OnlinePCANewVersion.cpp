@@ -240,12 +240,9 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
     MatrixXd r_candidate, p_dist;
     mdl_return mdl;
 
-    cout << "start " <<endl;
-    cout << eignval_W << endl;
     mdl = mixture_decompose_list(eignval_W, INPUT_DIMENSION, INPUT_RANK);
     r_candidate = mdl.r_candidate;
     p_dist = mdl.p_dist;
-    cout << "end " <<endl;
 
     MatrixXi idx_pick;
     MatrixXi r_corner; // idx_pick choose one node.

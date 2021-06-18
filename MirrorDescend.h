@@ -12,6 +12,6 @@
 //using namespace std;
 //Matrix<double, -1, -1> &operator = (const Matrix<double, -1, -1> & m);
 
-void MirrorDescendMain(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND);
+void MirrorDescendMain(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND, int KAISHU);
 
 #endif //LOWRANKDESCENDC_MIRRORDESCEND_H

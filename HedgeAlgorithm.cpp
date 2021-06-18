@@ -73,12 +73,10 @@ void HedgeAlgorithm(int INPUT_DIMENSION_LOWER, int  INPUT_DIMENSION_UPPER, int R
                 double downPartNumber = 0;
                 for (int i = 0;i < INPUT_DIMENSION;i++)
                     downPartNumber += upperPart[i];
-
                 // Renew weight
                 for (int i = 0;i < INPUT_DIMENSION;i++) {
                     weightVector[i] = upperPart[i] / (downPartNumber / 1.0);
                 }
-
             }
             regret[regretI] = currentRegret;
             regretI++;
