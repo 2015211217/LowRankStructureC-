@@ -258,16 +258,6 @@ OnlinePCAReturn OnlinePCA(int INPUT_DIMENSION, int INPUT_RANK, double eta, doubl
     idx_pick = randomChoose(p_mediate, 1, p_dist.cols(), false);
     int whatever = idx_pick(0, 0);
 
-//    r_corner.resize(1, r_candidate.cols());
-//    r_corner.fill(0);
-//    cout << r_candidate << endl;
-//    cout << whatever << endl;
-//    for (int i = 0; i < r_corner.cols();i++) {
-//        r_corner(0, i) = r_candidate(whatever, i);
-//        cout << "count" << i << endl << r_candidate(whatever, i) << endl << r_corner << endl;
-//    }
-//    if(abs(r_corner.sum() - 1) > 1e-6) cout << "wrong corner" <<endl;
-
     MatrixXd Mat_corner, Proj_use_mat, w_hat, w_hat_svd, wReal, PReal;
     MatrixXd r_corner_diag;
     r_corner_diag.conservativeResize(INPUT_DIMENSION, INPUT_DIMENSION);
