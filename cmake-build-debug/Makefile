@@ -143,6 +143,33 @@ LowRankDescendC/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/build
 .PHONY : LowRankDescendC/fast
 
+Algorithm512.o: Algorithm512.cpp.o
+
+.PHONY : Algorithm512.o
+
+# target to build an object file
+Algorithm512.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.o
+.PHONY : Algorithm512.cpp.o
+
+Algorithm512.i: Algorithm512.cpp.i
+
+.PHONY : Algorithm512.i
+
+# target to preprocess a source file
+Algorithm512.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.i
+.PHONY : Algorithm512.cpp.i
+
+Algorithm512.s: Algorithm512.cpp.s
+
+.PHONY : Algorithm512.s
+
+# target to generate assembly for a file
+Algorithm512.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.s
+.PHONY : Algorithm512.cpp.s
+
 HedgeAlgorithm.o: HedgeAlgorithm.cpp.o
 
 .PHONY : HedgeAlgorithm.o
@@ -169,6 +196,33 @@ HedgeAlgorithm.s: HedgeAlgorithm.cpp.s
 HedgeAlgorithm.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.s
 .PHONY : HedgeAlgorithm.cpp.s
+
+LowRankExpertAdvice.o: LowRankExpertAdvice.cpp.o
+
+.PHONY : LowRankExpertAdvice.o
+
+# target to build an object file
+LowRankExpertAdvice.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.o
+.PHONY : LowRankExpertAdvice.cpp.o
+
+LowRankExpertAdvice.i: LowRankExpertAdvice.cpp.i
+
+.PHONY : LowRankExpertAdvice.i
+
+# target to preprocess a source file
+LowRankExpertAdvice.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.i
+.PHONY : LowRankExpertAdvice.cpp.i
+
+LowRankExpertAdvice.s: LowRankExpertAdvice.cpp.s
+
+.PHONY : LowRankExpertAdvice.s
+
+# target to generate assembly for a file
+LowRankExpertAdvice.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.s
+.PHONY : LowRankExpertAdvice.cpp.s
 
 MVEE.o: MVEE.cpp.o
 
@@ -197,33 +251,6 @@ MVEE.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MVEE.cpp.s
 .PHONY : MVEE.cpp.s
 
-MirrorDescend.o: MirrorDescend.cpp.o
-
-.PHONY : MirrorDescend.o
-
-# target to build an object file
-MirrorDescend.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o
-.PHONY : MirrorDescend.cpp.o
-
-MirrorDescend.i: MirrorDescend.cpp.i
-
-.PHONY : MirrorDescend.i
-
-# target to preprocess a source file
-MirrorDescend.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.i
-.PHONY : MirrorDescend.cpp.i
-
-MirrorDescend.s: MirrorDescend.cpp.s
-
-.PHONY : MirrorDescend.s
-
-# target to generate assembly for a file
-MirrorDescend.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.s
-.PHONY : MirrorDescend.cpp.s
-
 OnlinePCANewVersion.o: OnlinePCANewVersion.cpp.o
 
 .PHONY : OnlinePCANewVersion.o
@@ -250,6 +277,33 @@ OnlinePCANewVersion.s: OnlinePCANewVersion.cpp.s
 OnlinePCANewVersion.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.s
 .PHONY : OnlinePCANewVersion.cpp.s
+
+SchimidtOrth.o: SchimidtOrth.cpp.o
+
+.PHONY : SchimidtOrth.o
+
+# target to build an object file
+SchimidtOrth.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.o
+.PHONY : SchimidtOrth.cpp.o
+
+SchimidtOrth.i: SchimidtOrth.cpp.i
+
+.PHONY : SchimidtOrth.i
+
+# target to preprocess a source file
+SchimidtOrth.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.i
+.PHONY : SchimidtOrth.cpp.i
+
+SchimidtOrth.s: SchimidtOrth.cpp.s
+
+.PHONY : SchimidtOrth.s
+
+# target to generate assembly for a file
+SchimidtOrth.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.s
+.PHONY : SchimidtOrth.cpp.s
 
 main.o: main.cpp.o
 
@@ -287,18 +341,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... LowRankDescendC"
+	@echo "... Algorithm512.o"
+	@echo "... Algorithm512.i"
+	@echo "... Algorithm512.s"
 	@echo "... HedgeAlgorithm.o"
 	@echo "... HedgeAlgorithm.i"
 	@echo "... HedgeAlgorithm.s"
+	@echo "... LowRankExpertAdvice.o"
+	@echo "... LowRankExpertAdvice.i"
+	@echo "... LowRankExpertAdvice.s"
 	@echo "... MVEE.o"
 	@echo "... MVEE.i"
 	@echo "... MVEE.s"
-	@echo "... MirrorDescend.o"
-	@echo "... MirrorDescend.i"
-	@echo "... MirrorDescend.s"
 	@echo "... OnlinePCANewVersion.o"
 	@echo "... OnlinePCANewVersion.i"
 	@echo "... OnlinePCANewVersion.s"
+	@echo "... SchimidtOrth.o"
+	@echo "... SchimidtOrth.i"
+	@echo "... SchimidtOrth.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -94,10 +94,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Algorithm512.cpp">
+			<Option target="LowRankDescendC"/>
+		</Unit>
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Algorithm512.h">
+			<Option target="LowRankDescendC"/>
+		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.cpp">
 			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.h">
+			<Option target="LowRankDescendC"/>
+		</Unit>
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/LowRankExpertAdvice.cpp">
+			<Option target="LowRankDescendC"/>
+		</Unit>
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/LowRankExpertAdvice.h">
 			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.cpp">
@@ -106,16 +118,16 @@
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.h">
 			<Option target="LowRankDescendC"/>
 		</Unit>
-		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.cpp">
-			<Option target="LowRankDescendC"/>
-		</Unit>
-		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h">
-			<Option target="LowRankDescendC"/>
-		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.cpp">
 			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.h">
+			<Option target="LowRankDescendC"/>
+		</Unit>
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/SchimidtOrth.cpp">
+			<Option target="LowRankDescendC"/>
+		</Unit>
+		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/SchimidtOrth.h">
 			<Option target="LowRankDescendC"/>
 		</Unit>
 		<Unit filename="/Users/jiangxuanke/CLionProjects/LowRankDescendC++/main.cpp">

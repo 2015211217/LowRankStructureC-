@@ -3,7 +3,7 @@ project(LowRankDescendC)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(LowRankDescendC main.cpp MirrorDescend.h MVEE.h MVEE.cpp MirrorDescend.cpp HedgeAlgorithm.cpp HedgeAlgorithm.h OnlinePCANewVersion.cpp OnlinePCANewVersion.h)
+add_executable(LowRankDescendC main.cpp  MVEE.h MVEE.cpp  HedgeAlgorithm.cpp HedgeAlgorithm.h OnlinePCANewVersion.cpp OnlinePCANewVersion.h LowRankExpertAdvice.cpp LowRankExpertAdvice.h Algorithm512.cpp Algorithm512.h SchimidtOrth.cpp SchimidtOrth.h)
 #add_executable(LowRankDescendC main.cpp  HedgeAlgorithm.cpp HedgeAlgorithm.h)
 #
 

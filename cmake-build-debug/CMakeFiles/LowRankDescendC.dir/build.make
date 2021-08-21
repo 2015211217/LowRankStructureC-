@@ -103,22 +103,9 @@ CMakeFiles/LowRankDescendC.dir/MVEE.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LowRankDescendC.dir/MVEE.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.cpp -o CMakeFiles/LowRankDescendC.dir/MVEE.cpp.s
 
-CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o: CMakeFiles/LowRankDescendC.dir/flags.make
-CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o: ../MirrorDescend.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o -c /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.cpp
-
-CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.cpp > CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.i
-
-CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.cpp -o CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.s
-
 CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o: CMakeFiles/LowRankDescendC.dir/flags.make
 CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o: ../HedgeAlgorithm.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o -c /Users/jiangxuanke/CLionProjects/LowRankDescendC++/HedgeAlgorithm.cpp
 
 CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.i: cmake_force
@@ -131,7 +118,7 @@ CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.s: cmake_force
 
 CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o: CMakeFiles/LowRankDescendC.dir/flags.make
 CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o: ../OnlinePCANewVersion.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o -c /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.cpp
 
 CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.i: cmake_force
@@ -142,22 +129,65 @@ CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiangxuanke/CLionProjects/LowRankDescendC++/OnlinePCANewVersion.cpp -o CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.s
 
+CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.o: CMakeFiles/LowRankDescendC.dir/flags.make
+CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.o: ../LowRankExpertAdvice.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.o -c /Users/jiangxuanke/CLionProjects/LowRankDescendC++/LowRankExpertAdvice.cpp
+
+CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiangxuanke/CLionProjects/LowRankDescendC++/LowRankExpertAdvice.cpp > CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.i
+
+CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiangxuanke/CLionProjects/LowRankDescendC++/LowRankExpertAdvice.cpp -o CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.s
+
+CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.o: CMakeFiles/LowRankDescendC.dir/flags.make
+CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.o: ../Algorithm512.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.o -c /Users/jiangxuanke/CLionProjects/LowRankDescendC++/Algorithm512.cpp
+
+CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiangxuanke/CLionProjects/LowRankDescendC++/Algorithm512.cpp > CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.i
+
+CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiangxuanke/CLionProjects/LowRankDescendC++/Algorithm512.cpp -o CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.s
+
+CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.o: CMakeFiles/LowRankDescendC.dir/flags.make
+CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.o: ../SchimidtOrth.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.o -c /Users/jiangxuanke/CLionProjects/LowRankDescendC++/SchimidtOrth.cpp
+
+CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiangxuanke/CLionProjects/LowRankDescendC++/SchimidtOrth.cpp > CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.i
+
+CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiangxuanke/CLionProjects/LowRankDescendC++/SchimidtOrth.cpp -o CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.s
+
 # Object files for target LowRankDescendC
 LowRankDescendC_OBJECTS = \
 "CMakeFiles/LowRankDescendC.dir/main.cpp.o" \
 "CMakeFiles/LowRankDescendC.dir/MVEE.cpp.o" \
-"CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o" \
 "CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o" \
-"CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o"
+"CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o" \
+"CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.o" \
+"CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.o" \
+"CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.o"
 
 # External object files for target LowRankDescendC
 LowRankDescendC_EXTERNAL_OBJECTS =
 
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/main.cpp.o
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/MVEE.cpp.o
-LowRankDescendC: CMakeFiles/LowRankDescendC.dir/MirrorDescend.cpp.o
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o
+LowRankDescendC: CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.o
+LowRankDescendC: CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.o
+LowRankDescendC: CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.o
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/build.make
 LowRankDescendC: /usr/local/lib/libopencv_gapi.4.5.1.dylib
 LowRankDescendC: /usr/local/lib/libopencv_stitching.4.5.1.dylib
@@ -216,7 +246,7 @@ LowRankDescendC: /usr/local/lib/libopencv_photo.4.5.1.dylib
 LowRankDescendC: /usr/local/lib/libopencv_imgproc.4.5.1.dylib
 LowRankDescendC: /usr/local/lib/libopencv_core.4.5.1.dylib
 LowRankDescendC: CMakeFiles/LowRankDescendC.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable LowRankDescendC"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable LowRankDescendC"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LowRankDescendC.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

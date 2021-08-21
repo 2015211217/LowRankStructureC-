@@ -15,12 +15,6 @@
 using namespace std;
 using namespace Eigen;
 
-double NormTwo(MatrixXd inputArray, int inputLength) { // Norm calculate
-    long double norm = 0;
-    for (int j = 0;j < inputLength;j++)
-        norm += pow(abs(inputArray(0, j)), 2);
-    return pow(norm, 0.5);
-}
 
 MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND, int KAISHU) {
     Matrix<double, 1, Dynamic> regret;
@@ -241,14 +235,10 @@ MatrixXd MirrorDescend(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int
 // write the file
          ofstream fout("LtCollection");
          if (fout)
-             fout << LtCollection <<endl;
+             fout << LtCollection << endl;
          else cout << "File cannot be opened" << endl;
          fout.close();
 //        cout << LtCollection << endl;
     }
     return regret;
-}
-
-void MirrorDescendMain(int INPUT_DIMENSION_LOWER, int INPUT_DIMENSION_UPPER, int INPUT_RANK, int ROUND, int KAISHU) {
-    MatrixXd regret = MirrorDescend(INPUT_DIMENSION_LOWER, INPUT_DIMENSION_UPPER, INPUT_RANK, ROUND, KAISHU);
 }
