@@ -64,10 +64,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/jiangxuanke/CLionProjects/LowRankDescendC++
+CMAKE_SOURCE_DIR = /Users/jiangxuanke/CLionProjects/LowRankStructureC-
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -94,14 +94,14 @@ clean: CMakeFiles/LowRankDescendC.dir/clean
 CMakeFiles/LowRankDescendC.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LowRankDescendC.dir/build.make CMakeFiles/LowRankDescendC.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target LowRankDescendC"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target LowRankDescendC"
 .PHONY : CMakeFiles/LowRankDescendC.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/LowRankDescendC.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/LowRankDescendC.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/LowRankDescendC.dir/rule
 
 # Convenience name for target.

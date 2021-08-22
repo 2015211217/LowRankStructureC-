@@ -20,41 +20,39 @@ gurobi_c.h
 stdio.h
 -
 
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/LowRankExpertAdvice.cpp
-LowRankExpertAdvice.h
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/LowRankExpertAdvice.h
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/Algorithm512.cpp
+Algorithm512.h
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/Algorithm512.h
 iostream
 -
 cmath
 -
 MVEE.h
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.h
-MirrorDescend.h
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/MVEE.h
+SchimidtOrth.h
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/SchimidtOrth.h
+Eigen/Core
+-
 Eigen/Eigenvalues
 -
 gurobi_c++.h
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/gurobi_c++.h
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/gurobi_c++.h
 iostream
 -
-SchimidtOrth.h
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/SchimidtOrth.h
 
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/LowRankExpertAdvice.h
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/Algorithm512.h
 Eigen/Core
 -
 
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MVEE.h
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/MVEE.h
 Eigen/Core
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/Core
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/Eigen/Core
 Eigen/Dense
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/Dense
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/Eigen/Dense
 
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/MirrorDescend.h
-
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/SchimidtOrth.h
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/SchimidtOrth.h
 Eigen/Core
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/Eigen/Core
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/Eigen/Core
 
 /usr/local/include/eigen3/Eigen/Cholesky
 Core

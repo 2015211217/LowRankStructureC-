@@ -11,9 +11,9 @@
 #include "random"
 #include "SchimidtOrth.h"
 
-#define INPUT_DIMENSION 10
+#define INPUT_DIMENSION 200
 #define INPUT_RANK 2
-#define ROUND 10
+#define ROUND 1000
 #define KAISHU 5
 #define EPSILON 0
 using namespace std;
@@ -106,6 +106,5 @@ int main() {
     for (int i = 0;i < ROUND; i++)
         cout << R512(0, i) <<" ";
     cout << endl;
-
     return 0;
 }

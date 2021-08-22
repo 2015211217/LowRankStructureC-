@@ -12,6 +12,7 @@
 #include "gurobi_c++.h"
 #include <iostream>
 #include "SchimidtOrth.h"
+#include <limits.h>
 
 using namespace std;
 using namespace Eigen;
@@ -93,7 +94,6 @@ MatrixXd LowRankExpertAdvice(MatrixXd data, int DIMENSION, int ROUND, double EPS
             model.addConstr(lhs == 1, "c0");
             model.setObjective(obj, GRB_MINIMIZE);
             model.optimize();
-            cout << weightVector <<endl;
             for (int i = 0;i < DIMENSION;i++)
                 weightVector(0, i) = weightGRB[i].get(GRB_DoubleAttr_X);
 

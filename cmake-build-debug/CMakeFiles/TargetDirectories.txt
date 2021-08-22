@@ -1,3 +1,3 @@
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/jiangxuanke/CLionProjects/LowRankDescendC++/cmake-build-debug/CMakeFiles/LowRankDescendC.dir
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/jiangxuanke/CLionProjects/LowRankStructureC-/cmake-build-debug/CMakeFiles/LowRankDescendC.dir
