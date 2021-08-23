@@ -4,10 +4,10 @@
 CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.o
  /Library/gurobi911/mac64/include/gurobi_c++.h
  /Library/gurobi911/mac64/include/gurobi_c.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/Algorithm512.cpp
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/Algorithm512.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/MVEE.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/SchimidtOrth.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/Algorithm512.cpp
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/Algorithm512.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/MVEE.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/SchimidtOrth.h
  /usr/local/include/eigen3/Eigen/Cholesky
  /usr/local/include/eigen3/Eigen/Core
  /usr/local/include/eigen3/Eigen/Dense
@@ -216,9 +216,9 @@ CMakeFiles/LowRankDescendC.dir/Algorithm512.cpp.o
  /usr/local/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h
  /usr/local/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/HedgeAlgorithm.cpp
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/HedgeAlgorithm.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/SchimidtOrth.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/HedgeAlgorithm.cpp
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/HedgeAlgorithm.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/SchimidtOrth.h
  /usr/local/include/eigen3/Eigen/Core
  /usr/local/include/eigen3/Eigen/src/Core/Array.h
  /usr/local/include/eigen3/Eigen/src/Core/ArrayBase.h
@@ -362,11 +362,11 @@ CMakeFiles/LowRankDescendC.dir/HedgeAlgorithm.cpp.o
 CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.o
  /Library/gurobi911/mac64/include/gurobi_c++.h
  /Library/gurobi911/mac64/include/gurobi_c.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/LowRankExpertAdvice.cpp
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/LowRankExpertAdvice.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/MVEE.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/MirrorDescend.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/SchimidtOrth.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/LowRankExpertAdvice.cpp
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/LowRankExpertAdvice.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/MVEE.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/MirrorDescend.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/SchimidtOrth.h
  /usr/local/include/eigen3/Eigen/Cholesky
  /usr/local/include/eigen3/Eigen/Core
  /usr/local/include/eigen3/Eigen/Dense
@@ -575,7 +575,7 @@ CMakeFiles/LowRankDescendC.dir/LowRankExpertAdvice.cpp.o
  /usr/local/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h
  /usr/local/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 CMakeFiles/LowRankDescendC.dir/MVEE.cpp.o
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/MVEE.cpp
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/MVEE.cpp
  /usr/local/include/eigen3/Eigen/Core
  /usr/local/include/eigen3/Eigen/src/Core/Array.h
  /usr/local/include/eigen3/Eigen/src/Core/ArrayBase.h
@@ -719,8 +719,8 @@ CMakeFiles/LowRankDescendC.dir/MVEE.cpp.o
 CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o
  /Library/gurobi911/mac64/include/gurobi_c++.h
  /Library/gurobi911/mac64/include/gurobi_c.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/OnlinePCANewVersion.cpp
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/OnlinePCANewVersion.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/OnlinePCANewVersion.cpp
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/OnlinePCANewVersion.h
  /usr/local/include/eigen3/Eigen/Cholesky
  /usr/local/include/eigen3/Eigen/Core
  /usr/local/include/eigen3/Eigen/Dense
@@ -936,8 +936,8 @@ CMakeFiles/LowRankDescendC.dir/OnlinePCANewVersion.cpp.o
  /usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixSquareRoot.h
  /usr/local/include/eigen3/unsupported/Eigen/src/MatrixFunctions/StemFunction.h
 CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.o
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/SchimidtOrth.cpp
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/SchimidtOrth.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/SchimidtOrth.cpp
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/SchimidtOrth.h
  /usr/local/include/eigen3/Eigen/Core
  /usr/local/include/eigen3/Eigen/src/Core/Array.h
  /usr/local/include/eigen3/Eigen/src/Core/ArrayBase.h
@@ -1079,11 +1079,11 @@ CMakeFiles/LowRankDescendC.dir/SchimidtOrth.cpp.o
  /usr/local/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h
  /usr/local/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 CMakeFiles/LowRankDescendC.dir/main.cpp.o
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/Algorithm512.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/HedgeAlgorithm.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/LowRankExpertAdvice.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/SchimidtOrth.h
- /Users/jiangxuanke/CLionProjects/LowRankStructureC-/main.cpp
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/Algorithm512.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/HedgeAlgorithm.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/LowRankExpertAdvice.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/SchimidtOrth.h
+ /Users/jiangxuanke/CLionProjects/LowRankDescendC-/main.cpp
  /usr/local/include/eigen3/Eigen/Cholesky
  /usr/local/include/eigen3/Eigen/Core
  /usr/local/include/eigen3/Eigen/Eigenvalues

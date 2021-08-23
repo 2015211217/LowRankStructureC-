@@ -44,14 +44,14 @@ MatrixXd Algorithm512(MatrixXd data, int DIMENSION, int INPUT_RANK, int ROUND, d
             inputAccumulation(0, i) += Lt(0, i);
             accumulativeWeightInput += weightVector(0, i) * Lt(0, i);
         }
-
         regret(0, regretI) = accumulativeWeightInput - inputAccumulation.minCoeff();
         regretI++;
         // JUDGE
         if (sk == 0) gamma = 0;
         else gamma = sqrt(20 * k * (epsilon / (1.0 * sk)));
-        if (sk == 0 && NormTwo(Lt, DIMENSION) >= 0 && NormTwo(MatrixXd(Lt - Lt * PUk * PUkLt.transpose()), DIMENSION) > 2 * epsilon) {
-            if (Uk.rows() != 0) {
+
+        if (sk == 0 && NormTwo(Lt, DIMENSION) >= 0 && NormTwo(MatrixXd(Lt - Lt * PUk * PUk.transpose()), DIMENSION) > 2 * epsilon) {
+            if (Uk.rows() < INPUT_RANK) {
                 tau = 0;
                 if (t == 1) {
                     Uk = Lt;
@@ -59,9 +59,10 @@ MatrixXd Algorithm512(MatrixXd data, int DIMENSION, int INPUT_RANK, int ROUND, d
                 } else {
                     // a * N
                     Uk.conservativeResize(Uk.rows() + 1, DIMENSION);
+
                     Uk.row(Uk.rows() - 1) = Lt.row(0);
                     // shimite zhengjiaohua
-                    PUk = SchimidtOrth(Uk);
+                    PUk = SchimidtOrth(Uk).transpose();// a * N
 //                    if (PUk.size()) PUkLt = Lt * PUk * PUk.transpose();
                 }
                 if (k < INPUT_RANK) k++;
@@ -72,17 +73,14 @@ MatrixXd Algorithm512(MatrixXd data, int DIMENSION, int INPUT_RANK, int ROUND, d
                 for (int i = 0;i < DIMENSION;i++)
                     for (int j = 0;j < Uk.rows();j++)
                         UkMVEE(DIMENSION + i, j) = Uk(j, i);
-
                 m = MVEE(DIMENSION, Uk.rows(), UkMVEE, epsilon);
                 Hk = Uk.transpose() * m * Uk;
                 for (int i = 0;i < Hk.rows();i++)
                     for (int j = 0;j < Hk.cols();j++)
                         if (i == j) Hk(i, j) += 1;
-
             }
         }
         if (sk > 0) {
-
             if (NormTwo(Lt, DIMENSION) >= 2 * sk &&
             NormTwo(Lt - Lt * PUk * PUk.transpose(), DIMENSION) > 2 * epsilon + gamma * (NormTwo(Lt, DIMENSION) + epsilon)) {
                 if (Uk.rows() != INPUT_RANK) {
@@ -101,7 +99,7 @@ MatrixXd Algorithm512(MatrixXd data, int DIMENSION, int INPUT_RANK, int ROUND, d
                     UkMVEE.conservativeResize(DIMENSION * 2, Uk.rows());
                     for (int i = 0;i < DIMENSION;i++)
                         for (int j = 0;j < Uk.rows();j++)
-                            UkMVEE(DIMENSION + i, j) = Uk(j, i);
+                            UkMVEE(DIMENSION + i, j) = (-1) * Uk(j, i);
                     m = MVEE(DIMENSION, Uk.rows(), UkMVEE.transpose(), epsilon);
                     Hk = Uk.transpose() * m * Uk;
                     for (int i = 0;i < Hk.rows();i++)
@@ -115,6 +113,7 @@ MatrixXd Algorithm512(MatrixXd data, int DIMENSION, int INPUT_RANK, int ROUND, d
         else mk = 6 * epsilon + gamma * sqrt(DIMENSION);
         eta = sqrt((16 * k) / (1.0 * pow(1 + mk,2) * tau));
         // Renew Weight
+
         try {
             GRBModel model = GRBModel(env);
             // create variables
@@ -143,6 +142,8 @@ MatrixXd Algorithm512(MatrixXd data, int DIMENSION, int INPUT_RANK, int ROUND, d
             cout << " Error number : " << e.getErrorCode() << endl;
             cout << e.getMessage() << endl;
         }
+
     }
+
     return regret;
 }

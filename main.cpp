@@ -15,7 +15,7 @@
 #define INPUT_RANK 2
 #define ROUND 1000
 #define KAISHU 5
-#define EPSILON 0
+#define EPSILON 0.2
 using namespace std;
 using namespace Eigen;
 
@@ -64,7 +64,7 @@ int main() {
     LowRankR.resize(KAISHU, ROUND);
     R512.resize(KAISHU, ROUND);
     for (int i = 0;i < KAISHU;i++) {
-        cout << i << endl;
+        cout << "current kaishu is " << i << endl;
         MatrixXd inputLine;
         inputLine.resize(ROUND, INPUT_DIMENSION);
         for (int j = 0; j < ROUND; j++)
@@ -76,6 +76,7 @@ int main() {
         cout << Regret512 << endl;
         MatrixXd LowRankRegret = LowRankExpertAdvice(inputLine, INPUT_DIMENSION, ROUND, EPSILON);
         cout << LowRankRegret << endl;
+
         for (int j = 0;j < ROUND;j++) {
             HedgeR(i, j) = HedgeRegret(0, j);
             LowRankR(i, j) = LowRankRegret(0, j);
