@@ -35,8 +35,8 @@ MatrixXd Algorithm512(MatrixXd data, int DIMENSION, int INPUT_RANK, int ROUND, d
     GRBEnv env = GRBEnv();
     env.set(GRB_IntParam_OutputFlag, 0);
     env.set(GRB_IntParam_ScaleFlag, 0);
+//    env.set(GRB_IntParam_NonConvex, 2);
     Hk = Hk.setIdentity(DIMENSION, DIMENSION);
-
     for(int t = 1 ; t <= ROUND ; t++) {
         sk = pow(20 * k * DIMENSION * epsilon, 1 / (0.1 * 3));
         for (int i = 0;i < DIMENSION;i++) {
@@ -49,7 +49,6 @@ MatrixXd Algorithm512(MatrixXd data, int DIMENSION, int INPUT_RANK, int ROUND, d
         // JUDGE
         if (sk == 0) gamma = 0;
         else gamma = sqrt(20 * k * (epsilon / (1.0 * sk)));
-
         if (sk == 0 && NormTwo(Lt, DIMENSION) >= 0 && NormTwo(MatrixXd(Lt - Lt * PUk * PUk.transpose()), DIMENSION) > 2 * epsilon) {
             if (Uk.rows() < INPUT_RANK) {
                 tau = 0;
@@ -133,7 +132,8 @@ MatrixXd Algorithm512(MatrixXd data, int DIMENSION, int INPUT_RANK, int ROUND, d
             for (int i = 0; i < DIMENSION; i++)
                 for (int j = 0; j < DIMENSION; j++)
                     obj += pow(eta, -1) * (weightGRB[i] - weightVector(0, i)) * Hk(j, i) * (weightGRB[i] - weightVector(0, i));
-            model.addConstr(lhs == 1, "c0");
+
+                model.addConstr(lhs == 1, "c0");
             model.setObjective(obj, GRB_MINIMIZE);
             model.optimize();
             for (int i = 0;i < DIMENSION;i++)

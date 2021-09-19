@@ -11,11 +11,11 @@
 #include "random"
 #include "SchimidtOrth.h"
 
-#define INPUT_DIMENSION 200
+#define INPUT_DIMENSION 1000
 #define INPUT_RANK 2
 #define ROUND 1000
 #define KAISHU 5
-#define EPSILON 0.2
+#define EPSILON 1
 using namespace std;
 using namespace Eigen;
 
@@ -52,7 +52,7 @@ int main() {
             LtNoise(0, i) = distr(eng);
         }
         if (EPSILON != 0) {
-            LtNoise = LtNoise / (1.0 * (1 / (EPSILON * 0.1)) * NormTwo(LtNoise, INPUT_DIMENSION));
+            LtNoise = LtNoise / (1.0 * (1 / (EPSILON * 1.0)) * NormTwo(LtNoise, INPUT_DIMENSION));
             Lt = Lt + LtNoise.transpose();
         }
         for (int i = 0;i < INPUT_DIMENSION;i++)
