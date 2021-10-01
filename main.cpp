@@ -1,5 +1,5 @@
 //
-// Created by holmes on 2021/4/1.
+// Created by Jiang Xuanke on 2021/4/1
 //
 #include <iostream>
 #include "HedgeAlgorithm.h"
