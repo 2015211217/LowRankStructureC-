@@ -72,10 +72,13 @@ int main() {
                 inputLine(j, k) = INPUT(ROUND * i + j, k);
         MatrixXd HedgeRegret = HedgeMain(inputLine, INPUT_DIMENSION, INPUT_RANK, ROUND);
         cout << HedgeRegret << endl;
+        cout << "Hedge for this round done" << endl;
         MatrixXd Regret512 = Algorithm512(inputLine, INPUT_DIMENSION, INPUT_RANK, ROUND, EPSILON);
         cout << Regret512 << endl;
+        cout << "Algorithm1 for this round done" << endl;
         MatrixXd LowRankRegret = LowRankExpertAdvice(inputLine, INPUT_DIMENSION, ROUND, EPSILON);
         cout << LowRankRegret << endl;
+        cout << "LowRank for this round done" << endl;
 
         for (int j = 0;j < ROUND;j++) {
             HedgeR(i, j) = HedgeRegret(0, j);

@@ -33,7 +33,7 @@ MatrixXd LowRankExpertAdvice(MatrixXd data, int DIMENSION, int ROUND, double EPS
     GRBEnv env = GRBEnv();
     env.set(GRB_IntParam_OutputFlag, 0);
     env.set(GRB_IntParam_ScaleFlag, 0);
-//    env.set(GRB_IntParam_NonConvex, 2);
+    env.set(GRB_IntParam_NonConvex, 2);
     for (int t = 1; t <= ROUND;t++) {
         for (int i = 0;i < DIMENSION;i++) {
             Lt(0, i) = data(t - 1, i);
